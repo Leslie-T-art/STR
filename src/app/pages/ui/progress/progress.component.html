@@ -1,0 +1,466 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="Progress" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+<!-- End Breadcrumbs -->
+<div class="row">
+    <div class="col-xxl-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Default Progress</h4>
+            </div><!-- end card header -->
+
+            <div class="card-body">
+                <p class="text-muted">Use <code>progress</code> class to show default progress.</p>
+
+                <div>
+                    <div class="mb-4">
+                        <progressbar [value]="0"></progressbar>
+                    </div>
+                    <div class="mb-4">
+                        <progressbar [value]="25"></progressbar>
+                    </div>
+                    <div class="mb-4">
+                        <progressbar [value]="50"></progressbar>
+                    </div>
+                    <div class="mb-4">
+                        <progressbar [value]="75"></progressbar>
+                    </div>
+                    <div>
+                        <progressbar [value]="100"></progressbar>
+                    </div>
+                </div>
+
+            </div><!-- end card-body -->
+        </div><!-- end card -->
+    </div>
+    <!-- end col -->
+
+    <div class="col-xxl-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Progress with background color</h4>
+            </div><!-- end card header -->
+
+            <div class="card-body">
+
+                <p class="text-muted">Use <code>bg-</code> class to progress bar class with the below-mentioned color
+                    variation to set the background color progress bar.</p>
+
+                <div>
+                    <div class="mb-4">
+                        <progressbar [value]="15"></progressbar>
+                    </div>
+                    <div class="mb-4">
+                        <progressbar [value]="25" type="success"></progressbar>
+                    </div>
+                    <div class="mb-4">
+                        <progressbar [value]="50" type="info"></progressbar>
+                    </div>
+                    <div class="mb-4">
+                        <progressbar [value]="75" type="warning"></progressbar>
+                    </div>
+                    <div>
+                        <progressbar [value]="100" type="danger"></progressbar>
+                    </div>
+                </div>
+
+            </div><!-- end card-body -->
+        </div><!-- end card -->
+    </div>
+    <!-- end col -->
+</div>
+<!-- end row -->
+
+<div class="row">
+    <div class="col-xxl-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Progress with Label</h4>
+            </div><!-- end card header -->
+
+            <div class="card-body">
+
+                <p class="text-muted">Add labels to your progress bars by placing text within the progress-bar.</p>
+                <div>
+                    <progressbar [value]="25"><i>25%</i></progressbar>
+                </div>
+            </div><!-- end card-body -->
+        </div><!-- end card -->
+    </div>
+    <!-- end col -->
+
+    <div class="col-xxl-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Multiple Bars</h4>
+            </div><!-- end card header -->
+
+            <div class="card-body">
+                <p class="text-muted">Use <code>bg-</code> class to progress bar class with the below-mentioned color to
+                    change the appearance of individual progress bars.</p>
+                <div>
+                    <progressbar class="progress" [value]="stacked"></progressbar>
+                </div>
+            </div><!-- end card-body -->
+        </div><!-- end card -->
+    </div>
+    <!-- end col -->
+</div>
+<!-- end row -->
+
+<div class="row">
+    <div class="col-xxl-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Height</h4>
+            </div><!-- end card header -->
+
+            <div class="card-body">
+
+                <p class="text-muted">Use <code>progress-sm</code>, <code>progress-lg</code>, or
+                    <code>progress-xl</code> class to set the different heights of progress.
+                </p>
+                <div>
+                    <div class="mb-4">
+                        <h5 class="fs-sm">Small Progress</h5>
+                        <!-- Prgress sm -->
+                        <div>
+                            <progressbar class="progress-sm" [value]="55"></progressbar>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="fs-sm">Default Progress </h5>
+                        <!-- Prgress md -->
+                        <div>
+                            <progressbar class="" type="success" [value]="40"></progressbar>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="fs-sm">Large Progress</h5>
+                        <!-- Prgress lg -->
+                        <div>
+                            <progressbar class="progress-lg" type="warning" [value]="50"></progressbar>
+                        </div>
+                    </div>
+                    <div>
+                        <h5 class="fs-sm">Extra Large Progress</h5>
+                        <!-- Prgress xl -->
+                        <div>
+                            <progressbar class="progress-xl" type="danger" [value]="70"></progressbar>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- end card-body -->
+        </div><!-- end card -->
+    </div>
+    <!-- end col -->
+
+    <div class="col-xxl-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Striped Progress</h4>
+            </div><!-- end card header -->
+
+            <div class="card-body">
+                <p class="text-muted">Use <code>progress-bar-striped</code> class to add strip to the progress.</p>
+                <div>
+                    <div class="mb-4">
+                        <progressbar [value]="25" [striped]="true"></progressbar>
+                    </div>
+                    <div>
+                        <progressbar [value]="40" type="success" [striped]="true"></progressbar>
+                    </div>
+                </div>
+            </div><!-- end card-body -->
+        </div><!-- end card -->
+
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Animated Striped Progress</h4>
+            </div><!-- end card header -->
+
+            <div class="card-body">
+                <p class="text-muted">Use <code>progress-bar-striped progress-bar-animated</code> class to add strip
+                    with animation to the progress.</p>
+                <div>
+                    <progressbar [value]="75" [striped]="true" [animate]="true"></progressbar>
+                </div>
+            </div><!-- end card-body -->
+        </div><!-- end card -->
+    </div>
+    <!-- end col -->
+</div>
+<!-- end row -->
+
+<div class="row">
+    <div class="col-xxl-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Gradient Progress</h4>
+            </div><!-- end card header -->
+
+            <div class="card-body">
+                <p class="text-muted">Use <code>bg-gradient</code> class to show gradient progress bar.</p>
+                <div>
+                    <div class="mb-4">
+                        <progressbar class="bg-gradient" [value]="15"></progressbar>
+                    </div>
+                    <div class="mb-4">
+                        <progressbar class="bg-gradient" type="success" [value]="25"></progressbar>
+                    </div>
+                    <div class="mb-4">
+                        <progressbar class="bg-gradient" type="info" [value]="50"></progressbar>
+                    </div>
+                    <div class="mb-4">
+                        <progressbar class="bg-gradient" type="warning" [value]="75"></progressbar>
+                    </div>
+                    <div>
+                        <progressbar class="bg-gradient" type="danger" [value]="100"></progressbar>
+                    </div>
+                </div>
+            </div><!-- end card-body -->
+        </div><!-- end card -->
+    </div>
+    <!-- end col -->
+    <div class="col-xxl-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Animated Progress</h4>
+            </div><!-- end card header -->
+
+            <div class="card-body">
+                <p class="text-muted">Use <code>animated-progress</code> class to show progress with animation.</p>
+                <div>
+                    <div class="mb-4">
+                        <progressbar class="animated-progress" [value]="15"></progressbar>
+                    </div>
+                    <div class="mb-4">
+                        <progressbar class="animated-progress" type="success" [value]="25"></progressbar>
+                    </div>
+                    <div class="mb-4">
+                        <progressbar class="animated-progress" type="info" [value]="50"></progressbar>
+                    </div>
+                    <div class="mb-4">
+                        <progressbar class="animated-progress" type="warning" [value]="75"></progressbar>
+                    </div>
+                    <div>
+                        <progressbar class="animated-progress" type="danger" [value]="100"></progressbar>
+                    </div>
+                </div>
+
+            </div><!-- end card-body -->
+        </div><!-- end card -->
+    </div>
+    <!-- end col -->
+</div>
+<!-- end row -->
+
+<div class="row">
+    <div class="col-xxl-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Custom Progress</h4>
+            </div><!-- end card header -->
+
+            <div class="card-body">
+                <p class="text-muted">Use <code>animated-progress custom-progess </code> class to show custom progress
+                    with animation.</p>
+                <div>
+                    <div class="mb-4">
+                        <progressbar class="animated-progress custom-progress" [value]="15"></progressbar>
+                    </div>
+                    <div class="mb-4">
+                        <progressbar class="animated-progress custom-progress" type="success" [value]="25">
+                        </progressbar>
+                    </div>
+                    <div class="mb-4">
+                        <progressbar class="animated-progress custom-progress" type="info" [value]="50"></progressbar>
+                    </div>
+                    <div class="mb-4">
+                        <progressbar class="animated-progress custom-progress" type="warning" [value]="75">
+                        </progressbar>
+                    </div>
+                    <div>
+                        <progressbar class="animated-progress custom-progress" type="danger" [value]="100">
+                        </progressbar>
+                    </div>
+                </div>
+            </div><!-- end card-body -->
+        </div><!-- end card -->
+    </div>
+    <!-- end col -->
+
+    <div class="col-xxl-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Custom Progress with Label</h4>
+            </div><!-- end card header -->
+
+            <div class="card-body">
+                <p class="text-muted">Use
+                    <code>animated-progress custom-progess progress-label</code> class to show
+                    custom progress with animation and label.
+                </p>
+                <div>
+                    <div class="d-flex align-items-center pb-2 mt-4">
+                        <div class="flex-shrink-0 me-3">
+                            <div class="avatar-xs">
+                                <div class="avatar-title bg-light rounded-circle text-muted fs-16">
+                                    <i class="mdi mdi-facebook"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-grow-1">
+                            <div>
+                                <progressbar class="animated-progress custom-progress progress-label" [value]="15">
+                                    <div class="label">15%</div>
+                                </progressbar>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center py-2">
+                        <div class="flex-shrink-0 me-3">
+                            <div class="avatar-xs">
+                                <div class="avatar-title bg-light rounded-circle text-muted fs-16">
+                                    <i class="mdi mdi-twitter"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-grow-1">
+                            <div>
+                                <progressbar class="animated-progress custom-progress progress-label" type="success" [value]="25">
+                                    <div class="label">25%</div>
+                                </progressbar>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center py-2">
+                        <div class="flex-shrink-0 me-3">
+                            <div class="avatar-xs">
+                                <div class="avatar-title bg-light rounded-circle text-muted fs-16">
+                                    <i class="mdi mdi-github"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-grow-1">
+                            <div>
+                                <progressbar class="animated-progress custom-progress progress-label" type="info" [value]="50">
+                                    <div class="label">30%</div>
+                                </progressbar>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end card-body -->
+        </div><!-- end card -->
+    </div>
+    <!-- end col -->
+</div>
+<!-- end row -->
+
+<div class="row">
+
+    <div class="col-xxl-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Content Progress</h4>
+            </div><!-- end card header -->
+
+            <div class="card-body">
+                <p class="text-muted pb-2">Example of progress with content wrapped in progress.</p>
+                <div>
+                    <div class="card bg-light overflow-hidden shadow-none">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-0"><b class="text-info">30%</b> Update in progress...</h6>
+                                </div>
+                                <div class="flex-shrink-0">
+                                    <h6 class="mb-0">1 min left</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rounded-0">
+                            <progressbar class="bg-info-subtle" type="info" [value]="30"></progressbar>
+                        </div>
+                    </div>
+
+                    <div class="card bg-light overflow-hidden shadow-none">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-0"><b class="text-success">60%</b> Update in progress...</h6>
+                                </div>
+                                <div class="flex-shrink-0">
+                                    <h6 class="mb-0">45s left</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rounded-0">
+                            <progressbar class="bg-success-subtle" type="success" [value]="60"></progressbar>
+                        </div>
+                    </div>
+
+                    <div class="card bg-light overflow-hidden shadow-none">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-0"><b class="text-danger">82%</b> Update in progress...</h6>
+                                </div>
+                                <div class="flex-shrink-0">
+                                    <h6 class="mb-0">25s left</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rounded-0">
+                            <progressbar class="bg-danger-subtle" type="danger" [value]="82"></progressbar>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end card-body -->
+        </div><!-- end card -->
+    </div><!-- end col -->
+
+    <div class="col-xxl-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Progress with Steps</h4>
+            </div><!-- end card header -->
+
+            <div class="card-body">
+                <p class="text-muted pb-2">Here is the example of progress which is represented by steps completion.</p>
+                <div class="position-relative m-4">
+                    <div>
+                        <progressbar [value]="50" style="height: 1px;"></progressbar>
+                    </div>
+                    <button type="button" class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-primary rounded-pill" style="width: 2rem; height:2rem;">1</button>
+                    <button type="button" class="position-absolute top-0 start-50 translate-middle btn btn-sm btn-primary rounded-pill" style="width: 2rem; height:2rem;">2</button>
+                    <button type="button" class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-light rounded-pill" style="width: 2rem; height:2rem;">3</button>
+                </div>
+            </div><!-- end card-body -->
+        </div><!-- end card -->
+
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Step Progress with Arrow</h4>
+            </div><!-- end card header -->
+
+            <div class="card-body">
+                <p class="text-muted pb-2">Use <code>progress-step-arrow </code>class to create step progress with an
+                    arrow.</p>
+                <div class="progress progress-step-arrow progress-info mb-4">
+                    <a href="javascript:void(0);" class="progress-bar active" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Step 1</a>
+                    <a href="javascript:void(0);" class="progress-bar pending d-none d-md-inline-block" role="progressbar" style="width: 100%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
+                        Step 2</a>
+                    <a href="javascript:void(0);" class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"> Step 3</a>
+                </div>
+            </div><!-- end card-body -->
+        </div><!-- end card -->
+
+    </div>
+    <!-- end col -->
+
+</div>
+<!-- end row -->s
