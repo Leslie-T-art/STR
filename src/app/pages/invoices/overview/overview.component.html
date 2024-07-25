@@ -1,0 +1,186 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="Invoice Overview" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+<!-- End Breadcrumbs -->
+
+<div class="row justify-content-center">
+    <div class="col-xxl-9">
+
+        <div class="card overflow-hidden" id="invoice">
+            <div class="invoice-effect-top position-absolute start-0">
+                <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 764 182" width="764" height="182">
+                    <title>&lt;Group&gt;</title>
+                    <g id="&lt;Group&gt;">
+                        <g id="&lt;Group&gt;">
+                            <path id="&lt;Path&gt;" style="fill: var(--tb-secondary-bg);" d="m-6.6 177.4c17.5 0.1 35.1 0 52.8-0.4 286.8-6.6 537.6-77.8 700.3-184.6h-753.1z" />
+                        </g>
+                        <g id="&lt;Group&gt;" style="opacity: .4">
+                            <path id="&lt;Path&gt;" style="fill: var(--tb-light);" d="m-6.6 132.8c43.5 2.1 87.9 2.7 132.9 1.7 246.9-5.6 467.1-59.2 627.4-142.1h-760.3z" />
+                        </g>
+                    </g>
+                </svg>
+            </div>
+            <div class="card-body z-1 position-relative">
+                <div class="d-sm-block d-md-flex">
+                    <div class="flex-grow-1">
+                        <img src="assets/images/logo-dark.png" class="card-logo-dark" alt="logo dark" height="28">
+                        <img src="assets/images/logo-light.png" class="card-logo-light" alt="logo light" height="28">
+                    </div>
+                    <div class="flex-shrink-0 mt-sm-0 mt-3">
+                        <h6><span class="text-muted fw-normal">Legal Registration No:</span> <span id="legal-register-no">{{invoices?.company_details.legal_registration_no}}</span></h6>
+                        <h6><span class="text-muted fw-normal">Email:</span> <span id="email">{{invoices?.company_details.email}}</span></h6>
+                        <h6><span class="text-muted fw-normal">Website:</span> <a href="https://themesbrand.com/" class="link-primary" target="_blank" id="website">{{invoices?.company_details.website}}</a></h6>
+                        <h6 class="mb-0"><span class="text-muted fw-normal">Contact No: </span><span id="contact-no"> {{invoices?.company_details.contact_no}}</span></h6>
+                    </div>
+                </div>
+                <div class="mt-5 pt-4">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <div class="mb-2 d-flex gap-2 align-items-baseline">
+                                <p class="text-muted mb-2 text-uppercase">Invoice No : </p>
+                                <h5 class="fs-md mb-0">#TBS<span id="invoice-no">{{invoices?.invoice_no}}</span></h5>
+                            </div>
+                            <div class="mb-2 d-flex gap-2 align-items-baseline">
+                                <p class="text-muted mb-2 text-uppercase">Date : </p>
+                                <h5 class="fs-md mb-0"><span id="invoice-date">{{invoices?.createDate}}</span></h5>
+                            </div>
+                            <div class="mb-2 d-flex gap-2 align-items-baseline">
+                                <p class="text-muted mb-2 text-uppercase">Due Date : </p>
+                                <h5 class="fs-md mb-0"><span id="invoice-due-date">{{invoices?.dueDate}}</span></h5>
+                            </div>
+                            <div class="mb-2 d-flex gap-2 align-items-baseline">
+                                <p class="text-muted mb-2 text-uppercase">Payment Status</p>
+                                <span class="badge bg-success-subtle text-success fs-xxs" id="payment-status">{{invoices?.status}}</span>
+                            </div>
+                            <div class="d-flex gap-2 align-items-baseline">
+                                <p class="text-muted mb-2 text-uppercase">Total Amount : </p>
+                                <h5 class="fs-md mb-0">$<span id="total-amount">{{invoices?.invoice_amount}}</span></h5>
+                            </div>
+                        </div>
+                        <!--end col-->
+                        <div class="col-md-4">
+                            <div class="mb-4">
+                                <p class="text-muted text-uppercase mb-2">Billing Address</p>
+                                <h6 class="fs-md" id="billing-name">{{invoices?.billing_address.full_name}}</h6>
+                                <p class="text-muted mb-1" id="billing-address-line-1">{{invoices?.billing_address.address}}</p>
+                                <p class="text-muted mb-1"><span>Phone: +</span><span id="billing-phone-no">{{invoices?.billing_address.phone}}</span></p>
+                                <p class="text-muted mb-0"><span>Tax: </span><span id="billing-tax-no">{{invoices?.billing_address.tax}}</span> </p>
+                            </div>
+                        </div>
+                        <!--end col-->
+
+                        <div class="col-md-4">
+                            <div>
+                                <p class="text-muted text-uppercase mb-2">Shipping Address</p>
+                                <h6 class="fs-md" id="shipping-name">{{invoices?.shipping_address.full_name}}</h6>
+                                <p class="text-muted mb-1" id="shipping-address-line-1">{{invoices?.shipping_address.address}}</p>
+                                <p class="text-muted mb-1"><span>Phone: +</span><span id="shipping-phone-no">{{invoices?.shipping_address.phone}}</span></p>
+                            </div>
+                        </div>
+                    </div><!--end row-->
+                </div>
+                <div class="mt-4 pt-2">
+                    <div class="row g-3">
+
+                    </div><!--end row-->
+                </div>
+                <div class="table-responsive mt-4">
+                    <table class="table table-borderless text-center table-nowrap align-middle mb-0">
+                        <thead>
+                            <tr class="table-light">
+                                <th scope="col" style="width: 50px;">#</th>
+                                <th scope="col">Product Details</th>
+                                <th scope="col">Rate</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col" class="text-end">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody id="products-list">
+                            @for (product of invoices?.products; track $index) {
+                            <tr>
+                                <th scope="row">01</th>
+                                <td class="text-start">
+                                    <span class="fw-medium">{{product.product_name}}</span>
+                                    <p class="text-muted mb-0">Fashion</p>
+                                </td>
+                                <td>${{product.rates}}</td>
+                                <td>{{product.quantity}}</td>
+                                <td class="text-end">${{product.amount}}</td>
+                            </tr>}
+                        </tbody>
+                    </table><!--end table-->
+                </div>
+                <div class="border-top border-top-dashed mt-2" id="products-list-total">
+                    <table class="table table-borderless table-nowrap align-middle mb-0 ms-auto" style="width:250px">
+                        <tbody>
+                            <tr>
+                                <td>Sub Total</td>
+                                <td class="text-end">${{invoices?.order_summary.sub_total}}</td>
+                            </tr>
+                            <tr>
+                                <td>Estimated Tax <small class="text-muted">(18%)</small></td>
+                                <td class="text-end">${{invoices?.order_summary.estimated_tex}}</td>
+                            </tr>
+                            <tr>
+                                <td>Discount <small class="text-muted">(vixon30)</small></td>
+                                <td class="text-end">-${{invoices?.order_summary.discount}}</td>
+                            </tr>
+                            <tr>
+                                <td>Shipping Charge</td>
+                                <td class="text-end">${{invoices?.order_summary.shipping_charge}}</td>
+                            </tr>
+                            <tr class="border-top border-top-dashed fs-15">
+                                <th scope="row">Total Amount</th>
+                                <th class="text-end">${{invoices?.order_summary.total_amount}}</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--end table-->
+                </div>
+                <div class="mt-3">
+                    <h6 class="text-muted text-uppercase fw-semibold mb-3">Payment Details:</h6>
+                    <p class="text-muted mb-1">Payment Method: <span class="fw-medium" id="payment-method">{{invoices?.payment_details.payment_method}}</span></p>
+                    <p class="text-muted mb-1">Card Holder: <span class="fw-medium" id="card-holder-name">{{invoices?.payment_details.card_holder_name}}</span></p>
+                    <p class="text-muted mb-1">Card Number: <span class="fw-medium" id="card-number">{{getMaskedCardNumber(invoices?.payment_details.card_number)}}</span></p>
+                    <p class="text-muted mb-0">Total Amount: <span class="fw-medium">$</span><span id="card-total-amount">{{invoices?.payment_details.total_amount}}</span></p>
+                </div>
+                <div class="mt-4 mb-4">
+                    <div class="alert alert-danger mb-0">
+                        <span class="fw-semibold">NOTES:</span>
+                        <span id="note">All accounts are to be paid within 7 days from receipt of invoice. To be paid by cheque or
+                            credit card or direct payment online. If account is not paid within 7
+                            days the credits details supplied as confirmation of work undertaken
+                            will be charged the agreed quoted fee noted above.
+                        </span>
+                    </div>
+                </div>
+                <div>
+                    <p class="mb-4 pb-2"><b>Congratulations on your recent purchase!</b> It has been our pleasure to serve you, and we hope we see you again soon.</p>
+
+                    <div class="invoice-signature text-center">
+                        <img src="{{invoices?.sign_img}}" alt="" id="sign-img" height="30">
+                        <h6 class="mb-0 mt-3">Authorized Sign</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="invoice-effect-top position-absolute end-0" style="transform: rotate(180deg); bottom: -80px;">
+                <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 764 182" width="764" height="182">
+                    <title>&lt;Group&gt;</title>
+                    <g id="&lt;Group&gt;">
+                        <g id="&lt;Group&gt;">
+                            <path id="&lt;Path&gt;" style="fill: var(--tb-secondary-bg);" d="m-6.6 177.4c17.5 0.1 35.1 0 52.8-0.4 286.8-6.6 537.6-77.8 700.3-184.6h-753.1z" />
+                        </g>
+                        <g id="&lt;Group&gt;" style="opacity: .4">
+                            <path id="&lt;Path&gt;" style="fill: var(--tb-light);" d="m-6.6 132.8c43.5 2.1 87.9 2.7 132.9 1.7 246.9-5.6 467.1-59.2 627.4-142.1h-760.3z" />
+                        </g>
+                    </g>
+                </svg>
+            </div>
+        </div>
+        <!--end card-->
+        <div class="hstack gap-2 d-print-none mb-4">
+            <a href="javascript:window.print()" class="btn btn-success"><i class="ri-printer-line align-bottom me-1"></i> Print</a>
+            <button type="button" id="download-button" class="btn btn-primary"><i class="ri-download-2-line align-bottom me-1"></i> Download</button>
+        </div>
+    </div>
+    <!--end col-->
+</div>
