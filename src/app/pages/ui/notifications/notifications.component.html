@@ -1,0 +1,90 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="Notifications" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+<!-- End Breadcrumbs -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Default Toast</h4>
+            </div><!-- end card header -->
+
+            <div class="card-body">
+                <p class="text-muted">Use <code>toast-border-</code> with below-mentioned color variation to set a toast
+                    with border and icon.</p>
+                <div>
+
+                    <div class="position-relative">
+                        <div class="hstack flex-wrap gap-2">
+                            <button type="button" class="btn btn-primary" id="borderedToast1Btn" (click)="showStandard()">Primary Toast</button>
+                            <button type="button" class="btn btn-success" id="borderedToast2Btn" (click)="showSuccess()">Success Toast</button>
+                            <button type="button" class="btn btn-warning" id="borderedTost3Btn" (click)="showWarning()">Warning Toast</button>
+                            <button type="button" class="btn btn-danger" id="borderedToast4Btn" (click)="showError()">Danger Toast</button>
+                        </div>
+
+                        <div style="z-index: 11">
+                            <div id="borderedToast1" class="toast toast-border-primary overflow-hidden mt-3" role="alert" aria-live="assertive" aria-atomic="true">
+                                <div class="toast-body">
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-shrink-0 me-2">
+                                            <i class="ri-user-smile-line align-middle"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-0">Your application was successfully sent.</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="z-index: 11">
+                            <div id="borderedToast2" class="toast toast-border-success overflow-hidden mt-3" role="alert" aria-live="assertive" aria-atomic="true">
+                                <div class="toast-body">
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-shrink-0 me-2">
+                                            <i class="ri-checkbox-circle-fill align-middle"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-0">Yey! Everything worked!</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="z-index: 11">
+                            <div id="borderedTost3" class="toast toast-border-warning overflow-hidden mt-3" role="alert" aria-live="assertive" aria-atomic="true">
+                                <div class="toast-body">
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-shrink-0 me-2">
+                                            <i class="ri-notification-off-line align-middle"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-0">Something went wrong, try again.</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="z-index: 11">
+                            <div id="borderedToast4" class="toast toast-border-danger overflow-hidden mt-3" role="alert" aria-live="assertive" aria-atomic="true">
+                                <div class="toast-body">
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-shrink-0 me-2">
+                                            <i class="ri-alert-line align-middle"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-0">Something is very wrong! <a href="javascript:void(0);" class="text-decoration-underline">See detailed report.</a></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end col-->
+</div>
+<!--end row-->
