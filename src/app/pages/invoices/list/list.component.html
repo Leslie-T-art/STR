@@ -1,0 +1,222 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="Invoice List" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+<!-- End Breadcrumbs -->
+
+<div class="row row-cols-5 gx-3">
+    <div class="col-lg col-sm-6 col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-items-center gap-2 mb-3">
+                    <div class="avatar-xs flex-shrink-0">
+                        <div class="avatar-title bg-body-secondary text-primary border border-primary-subtle rounded-circle">
+                            <i class="bi bi-file-earmark-text"></i>
+                        </div>
+                    </div>
+                    <div class="flex-grow-1">
+                        <p class="text-muted mb-0">Total Invoices</p>
+                    </div>
+                </div>
+                <h4 class="mb-0"><span class="counter-value" [countUp]="8956"></span> <small class="text-success fs-xs fw-normal ms-1"><i class="bi bi-arrow-up align-baseline"></i>
+                        12.09%</small></h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg col-sm-6 col-12">
+        <div class="card bg-primary">
+            <div class="card-body">
+                <div class="d-flex align-items-center gap-2 mb-3">
+                    <div class="avatar-xs flex-shrink-0">
+                        <div class="avatar-title bg-body-secondary text-primary border border-primary-subtle rounded-circle">
+                            <i class="bi bi-file-earmark-check"></i>
+                        </div>
+                    </div>
+                    <div class="flex-grow-1">
+                        <p class="text-white text-opacity-75 mb-0">Paid Invoices</p>
+                    </div>
+                </div>
+                <h4 class="text-white mb-0"><span class="counter-value" [countUp]="4519"></span> <small class="text-warning fs-xs fw-normal ms-1"><i class="bi bi-arrow-up align-baseline"></i> 6.57%</small></h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg col-sm-6 col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-items-center gap-2 mb-3">
+                    <div class="avatar-xs flex-shrink-0">
+                        <div class="avatar-title bg-body-secondary text-warning border border-warning-subtle rounded-circle">
+                            <i class="bi bi-clock-history"></i>
+                        </div>
+                    </div>
+                    <div class="flex-grow-1">
+                        <p class="text-muted mb-0">Pending Invoices</p>
+                    </div>
+                </div>
+                <h4 class="mb-0"><span class="counter-value" [countUp]="2648"></span> <small class="text-success fs-xs fw-normal ms-1"><i class="bi bi-arrow-up align-baseline"></i>
+                        4.07%</small></h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg col-sm-6 col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-items-center gap-2 mb-3">
+                    <div class="avatar-xs flex-shrink-0">
+                        <div class="avatar-title bg-body-secondary text-danger border border-danger-subtle rounded-circle">
+                            <i class="bi bi-file-earmark-plus"></i>
+                        </div>
+                    </div>
+                    <div class="flex-grow-1">
+                        <p class="text-muted mb-0">Overdue Invoices</p>
+                    </div>
+                </div>
+                <h4 class="mb-0"><span class="counter-value" [countUp]="871"></span> <small class="text-danger fs-xs fw-normal ms-1"><i class="bi bi-arrow-down align-baseline"></i>
+                        3.49%</small></h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg col-sm-12 col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-items-center gap-2 mb-3">
+                    <div class="avatar-xs flex-shrink-0">
+                        <div class="avatar-title bg-body-secondary text-info border border-info-subtle rounded-circle">
+                            <i class="bi bi-file-earmark-minus"></i>
+                        </div>
+                    </div>
+                    <div class="flex-grow-1">
+                        <p class="text-muted mb-0">Draft Invoices</p>
+                    </div>
+                </div>
+                <h4 class="mb-0"><span class="counter-value" [countUp]="871"></span> <small class="text-danger fs-xs fw-normal ms-1"><i class="bi bi-arrow-down align-baseline"></i>
+                        3.49%</small></h4>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end row-->
+
+<div class="row" id="invoiceList">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row align-items-center g-2">
+                    <div class="col-xl-2 col-md-3">
+                        <div class="search-box">
+                            <input type="text" class="form-control search" placeholder="Search for invoice, date, client or something..." [(ngModel)]="searchTerm" (ngModelChange)="performSearch()">
+                            <i class="ri-search-line search-icon"></i>
+                        </div>
+                    </div><!--end col-->
+                    <div class="col-xl-2 col-md-3">
+                        <div>
+                            <input type="text" class="form-control" id="exampleInputdate" placeholder="Select date range" mwlFlatpickr [altInput]="true" [convertModelValue]="true" mode="range">
+                        </div>
+                    </div>
+                    <div class="col-md-auto ms-auto">
+                        <div class="hstack gap-2 mt-2 mt-md-0">
+                            <button class="btn btn-subtle-info"><i class="bi bi-funnel"></i></button>
+                            <button class="btn btn-subtle-danger d-none" id="remove-actions" (click)="deleteData($event)"><i class="ri-delete-bin-2-line"></i></button>
+                            <a routerLink="/invoices/create" class="btn btn-secondary"><i class="bi bi-plus-circle align-baseline me-1"></i> Add Invoice</a>
+                        </div>
+                    </div><!--end col-->
+                </div><!--end row-->
+            </div>
+            <div class="card-body mt-3">
+                <div class="table-responsive table-card">
+                    <table class="table table-centered align-middle table-custom-effect table-nowrap mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="checkAll" value="option" [(ngModel)]="masterSelected" (change)="checkUncheckAll($event)">
+                                        <label class="form-check-label" for="checkAll"></label>
+                                    </div>
+                                </th>
+                                <th scope="col" class="sort cursor-pointer" (click)="onSort('invoice_no')">ID</th>
+                                <th scope="col" class="sort cursor-pointer" (click)="onSort('customer')">Customer Name</th>
+                                <th scope="col" class="sort cursor-pointer" (click)="onSort('email')">Email</th>
+                                <th scope="col" class="sort cursor-pointer" (click)="onSort('createDate')">Create Date</th>
+                                <th scope="col" class="sort cursor-pointer" (click)="onSort('dueDate')">Due Date</th>
+                                <th scope="col" class="sort cursor-pointer" (click)="onSort('invoice_amount')">Amount</th>
+                                <th scope="col" class="sort cursor-pointer" (click)="onSort('status')">Status</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="list form-check-all" id="invoice-list-data">
+                            @for (data of invoices; track $index) {
+                            <tr>
+                                <td>
+                                    <div class="form-check"> <input class="form-check-input" type="checkbox" name="chk_child" value="{{ data.id }}" [(ngModel)]="data.isSelected"> <label class="form-check-label"></label> </div>
+                                </td>
+                                <td class="invoice_id"><a routerLink="/invoices/overview">#{{data.invoice_no}}</a></td>
+                                <td class="customer_name">{{data.customer}}</td>
+                                <td class="email">{{data.email}}</td>
+                                <td class="create_date">{{data.createDate}}</td>
+                                <td class="due_date">{{data.dueDate}}</td>
+                                <td class="amount">${{data.invoice_amount}}</td>
+                                <td class="status"><span class="badge bg-success-subtle text-success">{{data.status}}</span></td>
+                                <td>
+                                    <ul class="d-flex gap-2 list-unstyled mb-0">
+                                        <li> <a href="javascript:void(0);" class="btn btn-subtle-primary btn-icon btn-sm" (click)="ViewInvoice(data);"><i class="ph-eye"></i></a> </li>
+                                        <li> <a href="javascript:void(0);" class="btn btn-subtle-secondary btn-icon btn-sm" (click)="EditInvoice(data);"><i class="ph-pencil"></i></a> </li>
+                                        <li> <a href="javascript:void(0);" data-bs-toggle="modal" (click)="removeData(data.id)" class="btn btn-subtle-danger btn-icon btn-sm remove-item-btn"><i class="ph-trash"></i></a> </li>
+                                    </ul>
+                                </td>
+                            </tr>}
+                        </tbody><!-- end tbody -->
+                    </table><!-- end table -->
+                    @if(invoices?.length == 0 && searchResults.length == 0){
+                    <div class="noresult">
+                        <div class="text-center py-4">
+                            <i class="ph-magnifying-glass fs-1 text-primary"></i>
+                            <h5 class="mt-2">Sorry! No Result Found</h5>
+                            <p class="text-muted mb-0">We've searched more than 6+ invoice We did not find any invoice
+                                for you search.</p>
+                        </div>
+                    </div>}
+                    <div id="elmLoader">
+                        <div class="spinner-border text-primary avatar-sm" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-center mt-4 pt-3" id="pagination-element">
+                    <div class="col-sm">
+                        <div class="text-muted text-center text-sm-start">
+                            Showing <span class="fw-semibold">{{invoices?.length}}</span> of <span class="fw-semibold">{{InvoiceList?.length}}</span> Results
+                        </div>
+                    </div><!--end col-->
+                    <div class="col-sm-auto mt-3 mt-sm-0">
+                        <pagination class="pagination-wrap hstack justify-content-center gap-2" [totalItems]="InvoiceList?.length" [itemsPerPage]="12" (pageChanged)="pageChanged($event)"></pagination>
+                    </div><!--end col-->
+                </div><!--end row-->
+            </div>
+        </div>
+    </div><!--end col-->
+</div><!--end row-->
+
+<!-- deleteRecordModal -->
+<div bsModal #deleteRecordModal="bs-modal" id="deleteRecordModal" class="modal fade zoomIn" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" id="deleteRecord-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-md-5">
+                <div class="text-center">
+                    <div class="text-danger">
+                        <i class="bi bi-trash display-5"></i>
+                    </div>
+                    <div class="mt-4">
+                        <h4 class="mb-2">Are you sure ?</h4>
+                        <p class="text-muted mx-3 mb-0">Are you sure you want to remove this record ?</p>
+                    </div>
+                </div>
+                <div class="d-flex gap-2 justify-content-center mt-4 pt-2 mb-2">
+                    <button type="button" class="btn w-sm btn-light btn-hover" (click)="deleteRecordModal.hide()">Close</button>
+                    <button type="button" class="btn w-sm btn-danger btn-hover" id="delete-record" (click)="confirmDelete()">Yes, Delete
+                        It!</button>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /deleteRecordModal -->
