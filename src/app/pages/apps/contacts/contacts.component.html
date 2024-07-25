@@ -1,0 +1,200 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="Contact" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+<!-- End Breadcrumbs -->
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="">
+                    <div class="row g-2 align-items-center">
+                        <div class="col-lg-3">
+                            <div class="search-box">
+                                <input type="text" id="searchTaskList" class="form-control search" placeholder="Search contact name, number position etc..." [(ngModel)]="searchTerm" (ngModelChange)="performSearch()">
+                                <i class="ri-search-line search-icon"></i>
+                            </div>
+                        </div>
+                        <div class="col-lg-auto">
+                            <select class="form-control" name="choices-select-sortlist" (change)="SortFilter($event);" id="choices-select-sortlist">
+                                <option value="">Recent</option>
+                                <option value="id">By ID</option>
+                                <option value="name">By Name</option>
+                            </select>
+                        </div>
+
+                        <div class="col-lg-auto ms-xl-auto">
+                            <button class="btn btn-primary createTask" type="button" (click)="addnew.show()">
+                                <i class="ri-add-fill align-bottom"></i> New Contact
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!--end row-->
+
+<div class="row">
+    @for (data of contactData; track $index) {
+    <div class=" col-xxl-3 col-sm-6">
+        <div class="col">
+            <div class="card">
+                <div class="card-body p-4">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <button type="button" class="btn btn-ghost-warning btn-icon rounded-circle btn-sm favourite-btn active" data-bs-toggle="button"> <i class="ri-star-fill fs-14"></i> </button>
+                        </div>
+                        <div dropdown class="col text-end dropdown">
+                            <a dropdownToggle href="javascript:void(0);" data-bs-toggle="dropdown" aria-expanded="false"> <i class="ri-more-fill fs-17"></i> </a>
+                            <ul *bsDropdownMenu class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item fs-md" href="javascript:void(0);" (click)="editContact($index)"><i class="ri-pencil-line me-2 align-bottom text-muted"></i>Edit</a></li>
+                                <li><a class="dropdown-item fs-md" href="javascript:void(0);" (click)="removeContact(data.id)"><i class="ri-delete-bin-5-line me-2 align-bottom text-muted"></i>Remove</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- end row -->
+
+                    <div class="mb-4">
+                        <div class="avatar-lg mx-auto img-thumbnail rounded-circle mb-4">
+                            @if(data.image){
+                            <img src="{{data.image}}" alt="" class="member-img img-fluid d-block rounded-circle">
+                            }@else{
+                            <div class="avatar-title rounded-circle bg-primary fs-4xl">
+                                {{data.avatar}}
+                            </div>
+                            }
+                        </div>
+                        <div class="text-center"> <a class="member-name" routerLink="/pages/profile">
+                                <h5 class="fs-lg mb-2">{{data.name}}</h5>
+                            </a>
+                            <p class="text-muted fs-md member-designation mb-0">{{data.designation}}</p>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item avatar-xs">
+                                <a href="javascript:void(0);" class="avatar-title bg-info-subtle text-info fs-15 rounded">
+                                    <i class="ri-phone-line"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item avatar-xs">
+                                <a href="javascript:void(0);" class="avatar-title bg-secondary-subtle text-secondary fs-15 rounded">
+                                    <i class="ri-calendar-2-line"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item avatar-xs">
+                                <a href="javascript:void(0);" class="avatar-title bg-danger-subtle text-danger fs-15 rounded">
+                                    <i class="ri-mail-line"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item avatar-xs">
+                                <a href="javascript:void(0);" class="avatar-title bg-primary-subtle text-primary fs-15 rounded">
+                                    <i class="ri-question-answer-line"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- end card-body -->
+            </div>
+            <!-- end card -->
+        </div>
+    </div>}
+    <!-- end col -->
+</div><!--end row-->
+
+<div id="elmLoader">
+    <div class="spinner-border text-primary avatar-sm" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
+<div class="row align-items-center justify-content-between text-center text-sm-start mb-3">
+    <div class="col-sm">
+        <div class="text-muted">
+            Showing <span class="fw-semibold">{{contactData?.length}}</span> of <span class="fw-semibold">{{allcontactData?.length}}</span> Results
+        </div>
+    </div><!--end col-->
+    <div class="col-sm-auto mt-3 mt-sm-0">
+        <pagination class="pagination-wrap hstack justify-content-center gap-2" [totalItems]="allcontactData?.length" [itemsPerPage]="endIndex" (pageChanged)="pageChanged($event)"></pagination>
+    </div><!--end col-->
+</div>
+
+<!-- removeNotificationModal -->
+<div bsModal #removeModal="bs-modal" id="removeModal" class="modal fade zoomIn" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" (click)="removeModal.hide()"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mt-2 text-center">
+                    <i class="ti ti-trash fs-1 text-danger"></i>
+                    <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
+                        <h5>Are you sure ?</h5>
+                        <p class="text-muted mx-4 mb-0">Are you sure you want to remove this contact ?</p>
+                    </div>
+                </div>
+                <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
+                    <button type="button" class="btn w-sm btn-light" (click)="removeModal.hide()">Close</button>
+                    <button type="button" class="btn w-sm btn-danger" id="delete-notification" (click)="confirmDelete()">Yes, Delete It!</button>
+                </div>
+            </div>
+
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- New contact Modal -->
+<div bsModal #addnew="bs-modal" class="modal fade" id="add-new" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0">
+            <div class="modal-body">
+                <form (ngSubmit)="AddContact()" [formGroup]="contactForm" autocomplete="off" id="memberlist-form" class="needs-validation" novalidate>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="text-center mb-4 pt-2">
+                                <div class="position-relative d-inline-block">
+                                    <div class="position-absolute bottom-0 end-0">
+                                        <label for="member-image-input" class="mb-0" placement="right" tooltip="Select Member Image">
+                                            <div class="avatar-xs">
+                                                <div class="avatar-title bg-light border rounded-circle text-muted cursor-pointer">
+                                                    <i class="ri-image-fill"></i>
+                                                </div>
+                                            </div>
+                                        </label>
+                                        <input class="form-control d-none" value="" id="member-image-input" type="file" accept="image/png, image/gif, image/jpeg" (change)="fileChange($event)">
+                                    </div>
+                                    <div class="avatar-lg">
+                                        <div class="avatar-title bg-light rounded-circle">
+                                            <img src="assets/images/users/user-dummy-img.jpg" id="member-img" class="avatar-md rounded-circle  img-fluid" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="teammembersName" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="teammembersName" formControlName="name" placeholder="Enter name" required>
+                                <div class="invalid-feedback">Please Enter a member name.</div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="designation" class="form-label">Designation</label>
+                                <input type="text" class="form-control" id="designation" formControlName="designation" placeholder="Enter designation" required>
+                                <div class="invalid-feedback">Please Enter a designation.</div>
+                            </div>
+                            <div class="hstack gap-2 justify-content-end">
+                                <button type="button" class="btn btn-light" (click)="addnew.hide()">Close</button>
+                                <button type="submit" class="btn btn-success" id="add-btn">Add Member</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--end modal-content-->
+    </div>
+    <!--end modal-dialog-->
+</div>
+<!--end modal-->

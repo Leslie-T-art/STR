@@ -1,0 +1,317 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="Widgets" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+<!-- End Breadcrumbs -->
+
+<div class="row">
+    <div class="col-12">
+        <h5 class="text-decoration-underline mb-3 pb-1">Tile Boxs</h5>
+    </div>
+</div>
+<!-- end row-->
+
+<div class="row">
+
+    @for (data of sources; track $index) {
+    <div class="col-lg-3 col-sm-6">
+        <div class="card">
+            <div class="card-body p-3 d-flex gap-3">
+                <div class="flex-shrink-0">
+                    <div class="avatar-sm">
+                        <div class="avatar-title bg-body-secondary text-{{data.logocolor}} rounded fs-3xl">
+                            <i class="ti ti-{{data.logo}}"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-grow-1">
+                    <p class="text-muted mb-2 d-flex align-items-center">{{data.platform}} <span class="badge bg-{{data.badge.color}}-subtle  text-success ms-auto"><i class="ti ti-arrow-{{data.badge.direction}}"></i> {{data.badge.value}}</span></p>
+                    <h6 class="fw-semibold mb-0"><span class="counter-value" [countUp]="data.visitors.count"></span>{{data.visitors.unit}} <small class="text-muted fw-normal">Visitors</small></h6>
+                </div>
+            </div>
+        </div>
+    </div>}<!--end col-->
+</div><!--end row-->
+
+<div class="row">
+    @for (data of Incomelist; track $index) {
+    <div class="col-xxl col-sm-6">
+        <div class="card overflow-hidden">
+            <div class="card-body">
+                <div class="avatar-sm float-end">
+                    <div class="avatar-title {{data.icon}} fs-3xl rounded">
+                        <i class="ph ph-{{data.logo}}"></i>
+                    </div>
+                </div>
+                <h4>{{data.countFront}}<span class="counter-value" [countUp]="data.metricValue" [options]="option"></span>{{data.counttype}}</h4>
+                <p class="text-muted mb-4">{{data.metric}}</p>
+                <p class="text-muted mb-0"><span class="badge bg-success-subtle text-success"><i class="bi bi-arrow-up"></i>{{data.percentageChange}}</span> vs last month</p>
+            </div>
+            <progressbar class="progress-sm" [type]="data.type" [value]="data.progress.percentage" [animate]="true">
+            </progressbar>
+        </div>
+    </div>}
+</div><!--end col-->
+
+<div class="row">
+    <div class="col-xxl-3 col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="avatar-sm float-end">
+                    <div class="avatar-title bg-primary-subtle text-primary fs-3xl rounded"><i class="ti ti-wallet"></i>
+                    </div>
+                </div>
+                <p class="fs-md text-uppercase text-muted mb-0">Total Revenue</p>
+
+                <h4 class="my-4"><span class="counter-value" [countUp]="368.24" [options]="option"></span>k </h4>
+                <p class="text-success fs-sm mb-0"><i class="bi bi-arrow-up me-1"></i> 06.41% Last Month</p>
+            </div>
+        </div>
+    </div><!--end col-->
+    <div class="col-xxl-3 col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="avatar-sm float-end">
+                    <div class="avatar-title bg-warning-subtle text-warning fs-3xl rounded"><i class="ti ti-building-store"></i></div>
+                </div>
+                <p class="fs-md text-uppercase text-muted mb-0">Total Orders</p>
+
+                <h4 class="my-4"><span class="counter-value" [countUp]="1.47" [options]="option">1.47</span>Sec
+                </h4>
+                <p class="text-success fs-sm mb-0"><i class="bi bi-arrow-up me-1"></i> 13% Last Month</p>
+            </div>
+        </div>
+    </div><!--end col-->
+    <div class="col-xxl-3 col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="avatar-sm float-end">
+                    <div class="avatar-title bg-success-subtle text-success fs-3xl rounded"><i class="ti ti-users-group"></i></div>
+                </div>
+                <p class="fs-md text-uppercase text-muted mb-0">Total Customers</p>
+
+                <h4 class="my-4"><span class="counter-value" [countUp]="1647">1647</span>
+                </h4>
+                <p class="text-danger fs-sm mb-0"><i class="bi bi-arrow-down me-1"></i> 07.26% Last Week</p>
+            </div>
+        </div>
+    </div><!--end col-->
+    <div class="col-xxl-3 col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="avatar-sm float-end">
+                    <div class="avatar-title bg-secondary-subtle text-secondary fs-3xl rounded"><i class="ti ti-box-seam"></i></div>
+                </div>
+                <p class="fs-md text-uppercase text-muted mb-0">Products</p>
+
+                <h4 class="my-4"><span class="counter-value" [countUp]="291.32" [options]="option">291.32</span>k
+                </h4>
+                <p class="text-success fs-sm mb-0"><i class="bi bi-arrow-up me-1"></i> 13% Last Month</p>
+            </div>
+        </div>
+    </div><!--end col-->
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <h5 class="text-decoration-underline mb-3 pb-1">Other Widgets</h5>
+    </div>
+</div>
+<!-- end row-->
+
+<div class="row">
+    <div class="col-xl-4 col-lg-6">
+        <div class="card card-height-100">
+            <div class="card-header d-flex">
+                <h5 class="card-title flex-grow-1 mb-0">Upcoming Schedule</h5>
+                <div class="flex-shrink-0">
+                    <a href="javascript:void(0);" class="btn btn-subtle-info btn-sm">View More <i class="ph-caret-right align-middle"></i></a>
+                </div>
+            </div>
+            <div class="card-body vstack gap-2">
+                <div class="d-flex bg-body-secondary rounded">
+                    <div class="flex-shrink-0 w-md py-2 px-3 text-center border-end">
+                        <p class="mb-1 text-muted fs-sm">Tue, 20 Feb</p>
+                        <h6 class="mb-0">09:19 PM</h6>
+                    </div>
+                    <div class="flex-grow-1 px-3 py-2 overflow-hidden">
+                        <h6>Marketing Policy Meetings</h6>
+                        <p class="text-muted fs-sm text-truncate mb-0">This is a periodic meeting between sales and
+                            marketing aimed at ensuring initial and ongoing alignment between the two groups.</p>
+                    </div>
+                </div>
+                <div class="d-flex bg-body-secondary rounded">
+                    <div class="flex-shrink-0 w-md py-2 px-3 text-center border-end">
+                        <p class="mb-1 text-muted fs-sm">Wed, 18 Jan</p>
+                        <h6 class="mb-0">11:37 PM</h6>
+                    </div>
+                    <div class="flex-grow-1 px-3 py-2 overflow-hidden">
+                        <h6>Design new UI and check sales</h6>
+                        <p class="text-muted fs-sm text-truncate mb-0">Designers aim to create interfaces which users
+                            find easy to use and pleasurable.</p>
+                    </div>
+                </div>
+                <div class="d-flex bg-body-secondary rounded">
+                    <div class="flex-shrink-0 w-md py-2 px-3 text-center border-end">
+                        <p class="mb-1 text-muted fs-sm">Tue, 16 Jan</p>
+                        <h6 class="mb-0">07:00 AM</h6>
+                    </div>
+                    <div class="flex-grow-1 px-3 py-2 overflow-hidden">
+                        <h6>Design Event banner</h6>
+                        <p class="text-muted fs-sm text-truncate mb-0">Event banners are one of the many ways to use
+                            print marketing for your business.</p>
+                    </div>
+                </div>
+                <div class="d-flex bg-body-secondary rounded">
+                    <div class="flex-shrink-0 w-md py-2 px-3 text-center border-end">
+                        <p class="mb-1 text-muted fs-sm">Tue, 12 Dec</p>
+                        <h6 class="mb-0">10:57 PM</h6>
+                    </div>
+                    <div class="flex-grow-1 px-3 py-2 overflow-hidden">
+                        <h6>Update Review from Client</h6>
+                        <p class="text-muted fs-sm text-truncate mb-0">Contact your unhappy customer and be personable.
+                            Use their first name and apologize as necessary.</p>
+                    </div>
+                </div>
+                <div class="d-flex bg-body-secondary rounded">
+                    <div class="flex-shrink-0 w-md py-2 px-3 text-center border-end">
+                        <p class="mb-1 text-muted fs-sm">Tue, 08 Nov</p>
+                        <h6 class="mb-0">11:32 AM</h6>
+                    </div>
+                    <div class="flex-grow-1 px-3 py-2 overflow-hidden">
+                        <h6>Ecommerce Menu Dashboard</h6>
+                        <p class="text-muted fs-sm text-truncate mb-0">Ecommerce dashboards aggregate the most important
+                            performance metrics, so online sellers can track their progress and quickly respond to any
+                            changes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--end col-->
+    <div class="col-xxl-4 col-lg-6">
+        <div class="card card-height-100">
+            <div class="card-header align-items-center d-flex">
+                <h4 class="card-title mb-0 flex-grow-1">New Customers</h4>
+                <a href="javascript:void(0);" class="flex-shrink-0 fs-md">View All <i class="ri-arrow-right-line align-bottom ms-1"></i></a>
+            </div><!-- end card header -->
+
+            <ngx-simplebar data-simplebar-track="light" style="max-height: 380px;">
+                @for (data of customerList; track $index) {
+                <div class="p-3 border-bottom border-bottom-dashed">
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="flex-shrink-0">
+                            <img src="{{data.avatar}}" alt="" class="rounded avatar-sm">
+                        </div>
+                        <div class="flex-grow-1">
+                            <h6 class="mb-1">{{data.name}}</h6>
+                            <p class="fs-13 text-muted mb-0">{{data.date}}</p>
+                        </div>
+                        <div class="flex-shrink-0">
+                            <a href="{{data.email}}" class="btn btn-icon btn-sm btn-subtle-info"><i class="ph-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>}
+            </ngx-simplebar>
+        </div> <!-- .card-->
+    </div><!--end col-->
+    <div class="col-xxl-4">
+        <div class="card card-height-100">
+            <div class="card-header align-items-center d-flex">
+                <h4 class="card-title mb-0 flex-grow-1">Top Products</h4>
+                <div class="flex-shrink-0">
+                    <div dropdown class="dropdown card-header-dropdown">
+                        <a dropdownToggle class="text-reset dropdown-btn" href="javascript:void(0);">
+                            <span class="text-muted">Report<i class="ti ti-chevron-down ms-1"></i></span>
+                        </a>
+                        <div *bsDropdownMenu class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="javascript:void(0);">Download Report</a>
+                            <a class="dropdown-item" href="javascript:void(0);">Export</a>
+                            <a class="dropdown-item" href="javascript:void(0);">Import</a>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end card header -->
+
+            <div class="card-body">
+                @for (data of productsList; track $index) {
+                <div class="mb-4">
+                    <span class="badge bg-dark-subtle text-body float-end">{{data.percentage}}%</span>
+                    <h6 class="mb-2">{{data.category}}</h6>
+                    <progressbar class="progress-sm" [value]="data.percentage" [type]="data.type" [striped]="true" [animate]="true"></progressbar>
+                </div>
+                }
+            </div>
+        </div> <!-- .card-->
+    </div><!--end col-->
+</div><!--end col-->
+
+<div class="row">
+    <div class="col-12">
+        <h5 class="text-decoration-underline mb-3 mt-2 pb-3">Chart & Map Widgets</h5>
+    </div>
+</div>
+<!-- end row-->
+
+<div class="row">
+    <div class="col-xxl-4 col-lg-6">
+        <div class="card">
+            <div class="card-header d-flex align-items-center">
+                <h6 class="card-title flex-grow-1 mb-0">Product Overview</h6>
+                <div class="dropdown flex-shrink-0" dropdown>
+                    <a class="text-reset dropdown-btn" dropdownToggle href="javascript:void(0);" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="text-muted fs-lg"><i class="ti ti-dots align-middle"></i></span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end" *bsDropdownMenu>
+                        <a class="dropdown-item" href="javascript:void(0);">Today</a>
+                        <a class="dropdown-item" href="javascript:void(0);">Last Week</a>
+                        <a class="dropdown-item" href="javascript:void(0);">Last Month</a>
+                        <a class="dropdown-item" href="javascript:void(0);">Current Year</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div id="column_stacked_chart" class="apex-charts" dir="ltr">
+                    <apx-chart [series]="columnstackedChart.series" [chart]="columnstackedChart.chart" [plotOptions]="columnstackedChart.plotOptions" [fill]="columnstackedChart.fill" [dataLabels]="columnstackedChart.dataLabels" [legend]="columnstackedChart.legend" [yaxis]="columnstackedChart.yaxis" [grid]="columnstackedChart.grid" [theme]="columnstackedChart.theme" [xaxis]="columnstackedChart.xaxis" [colors]="columnstackedChart.colors" dir="ltr"></apx-chart>
+                </div>
+            </div>
+        </div>
+    </div><!--end col-->
+
+    <div class="col-xxl-4 col-lg-6">
+        <div class="card card-height-100">
+            <div class="card-header d-flex align-items-center">
+                <h6 class="card-title flex-grow-1 mb-0">Sales Per Week</h6>
+                <div class="flex-shrink-0">
+                    <a class="btn btn-subtle-secondary btn-sm" href="javascript:void(0);">
+                        View More <i class="ti ti-arrow-narrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div id="shades_heatmap" class="apex-charts ms-n3" dir="ltr">
+                    <apx-chart [series]="shadesheatmapChart.series" [chart]="shadesheatmapChart.chart" [plotOptions]="shadesheatmapChart.plotOptions" [stroke]="shadesheatmapChart.stroke" [dataLabels]="shadesheatmapChart.dataLabels" [grid]="shadesheatmapChart.grid" [xaxis]="shadesheatmapChart.xaxis" [colors]="shadesheatmapChart.colors" dir="ltr"></apx-chart>
+                </div>
+            </div>
+        </div>
+    </div><!--end col-->
+
+    <div class="col-xxl-4">
+        <div class="card card-height-100">
+            <div class="card-header d-flex align-items-center">
+                <h6 class="card-title flex-grow-1 mb-0">Total Leads</h6>
+                <div class="dropdown card-header-dropdown flex-shrink-0" dropdown>
+                    <a class="text-reset dropdown-btn fs-md" dropdownToggle href="javascript:void(0);" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="text-muted">This Month<i class="ti ti-chevron-down ms-1"></i></span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end" *bsDropdownMenu>
+                        <a class="dropdown-item" href="javascript:void(0);">This Month</a>
+                        <a class="dropdown-item" href="javascript:void(0);">Last Month</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div id="usersActivity" class="apex-charts" dir="ltr">
+                    <apx-chart [series]="usersActivityChart.series" [chart]="usersActivityChart.chart" [plotOptions]="usersActivityChart.plotOptions" [fill]="usersActivityChart.fill" [dataLabels]="usersActivityChart.dataLabels" [legend]="usersActivityChart.legend" [grid]="usersActivityChart.grid" [xaxis]="usersActivityChart.xaxis" [colors]="usersActivityChart.colors" dir="ltr"></apx-chart>
+                </div>
+            </div>
+        </div>
+    </div><!--end col-->
+</div> <!-- end row-->

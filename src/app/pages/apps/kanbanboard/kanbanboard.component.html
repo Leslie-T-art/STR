@@ -1,0 +1,368 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="Kanban Board" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+<!-- End Breadcrumbs -->
+
+<div class="card">
+    <div class="card-body">
+        <div class="row g-2">
+            <div class="col-auto">
+                <div class="avatar-group" id="newMembar">
+                    @for (data of mebmerList; track $index) {
+                    <a href="javascript: void(0);" class="avatar-group-item" placement="top" tooltip="{{data.name}}">
+                        <img src="{{data.avatarURL}}" alt="" class="rounded-circle avatar-xs">
+                    </a>}
+                    <a href="javascript:void(0);" (click)="addmemberModal.show()" class="ms-2 avatar-group-item">
+                        <div class="avatar-xs">
+                            <div class="avatar-title rounded-circle">
+                                +
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!--end col-->
+
+            <div class="col-lg-3 col-auto ms-sm-auto">
+                <div class="search-box">
+                    <input type="text" class="form-control search" id="search-task-options" placeholder="Search for project, tasks...">
+                    <i class="ri-search-line search-icon"></i>
+                </div>
+            </div>
+            <!--end col-->
+
+            <div class="col-lg-auto">
+                <div class="hstack gap-2">
+                    <button class="btn btn-primary" (click)="createboardModal.show()"><i class="ri-add-line align-bottom me-1"></i> Create Board</button>
+                </div>
+            </div>
+            <!--end col-->
+
+        </div>
+        <!--end row-->
+    </div>
+    <!--end card-body-->
+</div>
+<!--end card-->
+
+<div class="tasks-board mb-3" id="kanbanboard">
+    @for (board of allTask; track $index) {
+    <div class="tasks-list">
+        <div class="d-flex mb-3">
+            <div class="flex-grow-1">
+                <h6 class="fs-14 text-uppercase fw-semibold mb-0">{{board.board}} <small class="badge bg-{{board.color}} align-bottom ms-1 totaltask-badge">{{board.subItem.length}}</small>
+                </h6>
+            </div>
+            <div class="flex-shrink-0">
+                <div dropdown class="dropdown card-header-dropdown">
+                    <a dropdownToggle class="text-reset dropdown-btn" href="javascript:void(0);">
+                        <i class="ri-more-2-line"></i>
+                    </a>
+                    <div *bsDropdownMenu class="dropdown-menu dropdown-menu-end">
+                        <a class="dropdown-item" href="javascript:void(0);">Priority</a>
+                        <a class="dropdown-item" href="javascript:void(0);">Date Added</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ngx-simplebar data-simplebar-track="light" class="tasks-wrapper px-3 mx-n3">
+            <div id="todo-task" class="tasks" dndDropzone dndEffectAllowed="move" (dndDrop)="onDrop($event, board.subItem,'Progress-task')">
+                <div class="dndPlaceholder" dndPlaceholderRef></div>
+                @if(board.subItem.length == '0'){
+                <img class="img-fluid" src="assets/images/file.png">}
+                @for (task of board.subItem; track $index) {
+                <ng-container>
+                    <div [dndDraggable]="task" dndEffectAllowed="move" (dndMoved)="onDragged(task, board.subItem)">
+                        <ng-template [ngTemplateOutlet]="TODO" [ngTemplateOutletContext]="{task:task}">
+                        </ng-template>
+                    </div>
+                </ng-container>
+                }
+            </div>
+        </ngx-simplebar>
+        <div class="my-3">
+            <button class="btn btn-subtle-info w-100" (click)="addMore('todo')">Add More</button>
+        </div>
+    </div>
+    }
+    <!--end tasks-list-->
+</div>
+<!--end task-board-->
+
+<!-- To Do Task  -->
+<ng-template #TODO let-task='task'>
+    <div class="card tasks-box">
+        <div class="card-body">
+            <div class="d-flex mb-3">
+                <div class="flex-grow-1 fs-md">
+                    <a href="javascript:void(0);">{{task.id}}</a>
+                </div>
+                <div dropdown container="ng-template" class="flex-shrink-0">
+                    <a dropdownToggle href="javascript:void(0);" class="text-muted" id="dropdownMenuLink3"><i class="ri-more-fill"></i></a>
+                    <ul *bsDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuLink3">
+                        <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-eye-fill align-bottom me-2 text-muted"></i>
+                                View</a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-edit-2-line align-bottom me-2 text-muted"></i> Edit</a></li>
+                        <li><a class="dropdown-item" data-bs-toggle="modal" (click)="deleteTask(task)"><i class="ri-delete-bin-5-line align-bottom me-2 text-muted"></i> Delete</a></li>
+                    </ul>
+                </div>
+            </div>
+            <h6 class="text-truncate task-title"><a href="javascript:void(0);" class="text-reset">{{task.title}}</a></h6>
+            @if(task.description){
+            <p class="text-muted fs-md mb-3">{{task.description}}</p>
+            }@else if(!task.description){
+            <div class="tasks-img rounded" style="background-image: url('{{task.image}}');"> </div>
+            }@else if (task.ismiddle) {
+            <div class="mb-3">
+                <div class="d-flex mb-1">
+                    <div class="flex-grow-1">
+                        <h6 class="text-muted fs-sm mb-0"><span class="text-info">35%</span> of 100%</h6>
+                    </div>
+                    <div class="flex-shrink-0">
+                        <span class="text-muted fw-medium fs-sm">3 Day</span>
+                    </div>
+                </div>
+                <progressbar class="rounded-3 progress-sm" [type]="task.type" [value]="task.progress"></progressbar>
+            </div>}
+            @for (category of task.category; track $index) {
+            <span class="badge me-1" [ngClass]="{'bg-primary-subtle text-primary':category == 'Design' || category == 'Graphic','bg-secondary-subtle text-secondary':category == 'Marketing','bg-warning-subtle text-warning':category =='Business' || category == 'Analysis' || category == 'Sketch','bg-danger-subtle text-danger':category=='Logo' || category== 'Ecommerce','bg-info-subtle text-info':category =='UI/UX' || category == 'Website','bg-success-subtle text-success':category == 'Product'}">{{category}}</span>}
+        </div>
+        <!--end card-body-->
+        <div class="card-footer border-top-dashed">
+            <div class="d-flex">
+                <div class="flex-grow-1">
+                    <div class="avatar-group">
+                        @for (profile of task.assignedTo; track $index) {
+                        <a href="javascript: void(0);" class="avatar-group-item" placement="top" tooltip="{{profile.name}}">
+                            <img src="{{profile.avatarURL}}" alt="" class="rounded-circle avatar-xxs">
+                        </a>}
+                    </div>
+                </div>
+                <div class="flex-shrink-0">
+                    <ul class="link-inline mb-0 fs-md">
+                        <li class="list-inline-item">
+                            <a href="javascript:void(0)" class="text-muted"><i class="ri-eye-line align-bottom"></i>
+                                {{task.views}}</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="javascript:void(0)" class="text-muted"><i class="ri-question-answer-line align-bottom"></i> {{task.comments}}</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="javascript:void(0)" class="text-muted"><i class="ri-attachment-2 align-bottom"></i>
+                                {{task.attachments}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        @if(!task.ismiddle && task.progress){
+        <progressbar [type]="task.type" class="progress-sm" [value]="task.progress"></progressbar>}
+    </div>
+    <!--end card-->
+
+</ng-template>
+
+
+
+<div bsModal #addmemberModal="bs-modal" class="modal fade" id="addmemberModal" tabindex="-1" aria-labelledby="addmemberModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content border-0">
+            <div class="modal-header p-3 bg-warning-subtle">
+                <h5 class="modal-title" id="addmemberModalLabel">Add Member</h5>
+                <button type="button" class="btn-close" id="btn-close-member" (click)="addmemberModal.hide()"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="memberForm">
+                    <div class="row g-3">
+                        <div class="col-lg-12">
+                            <label for="submissionidInput" class="form-label">Submission ID</label>
+                            <input type="number" class="form-control" id="submissionidInput" formControlName="id" placeholder="Submission ID">
+                        </div>
+                        <!--end col-->
+                        <div class="col-lg-12">
+                            <label for="profileimgInput" class="form-label">Profile Images</label>
+                            <input class="form-control" type="file" formControlName="image" id="profileimgInput" accept="image/png, image/gif, image/jpeg" (change)="fileChange($event)">
+                        </div>
+                        <!--end col-->
+                        <div class="col-lg-6">
+                            <label for="firstnameInput" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="firstnameInput" formControlName="name" placeholder="Enter firstname">
+                        </div>
+                        <!--end col-->
+                        <div class="col-lg-6">
+                            <label for="lastnameInput" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="lastnameInput" formControlName="lname" placeholder="Enter lastname">
+                        </div>
+                        <!--end col-->
+                        <div class="col-lg-12">
+                            <label for="designationInput" class="form-label">Designation</label>
+                            <input type="text" class="form-control" id="designationInput" formControlName="designation" placeholder="Designation">
+                        </div>
+                        <!--end col-->
+                        <div class="col-lg-12">
+                            <label for="titleInput" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="titleInput" formControlName="title" placeholder="Title">
+                        </div>
+                        <!--end col-->
+                        <div class="col-lg-6">
+                            <label for="numberInput" class="form-label">Phone Number</label>
+                            <input type="text" class="form-control" id="numberInput" formControlName="phone" placeholder="Phone number">
+                        </div>
+                        <!--end col-->
+                        <div class="col-lg-6">
+                            <label for="joiningdateInput" class="form-label">Joining Date</label>
+                            <input type="text" class="form-control" id="joiningdateInput" mwlFlatpickr [altInput]="true" altFormat="d/m/Y" [convertModelValue]="true" formControlName="date" placeholder="Select date">
+                        </div>
+                        <!--end col-->
+                        <div class="col-lg-12">
+                            <label for="emailInput" class="form-label">Email ID</label>
+                            <input type="email" class="form-control" id="emailInput" formControlName="email" placeholder="Email">
+                        </div>
+                        <!--end col-->
+                    </div>
+                </form>
+            </div>
+            <!--end row-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" (click)="addmemberModal.hide()"><i class="ri-close-line align-bottom me-1"></i> Close</button>
+                <button type="submit" class="btn btn-success" id="addMember" (click)="addMember()">Add Member</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!--end add member modal-->
+
+<div bsModal #createboardModal="bs-modal" class="modal fade" id="createboardModal" tabindex="-1" aria-labelledby="createboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0">
+            <div class="modal-header p-3 bg-info-subtle">
+                <h5 class="modal-title" id="createboardModalLabel">Add Board</h5>
+                <button type="button" class="btn-close" id="addBoardBtn-close" (click)="createboardModal.hide()"></button>
+            </div>
+            <div class="modal-body">
+                <form (ngSubmit)="addBoard()" action="#" [formGroup]="boardForm">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <label for="boardName" class="form-label">Board Name</label>
+                            <input type="text" class="form-control" formControlName="board" id="boardName" placeholder="Enter board name">
+                        </div>
+                        <div class="mt-4">
+                            <div class="hstack gap-2 justify-content-end">
+                                <button type="button" class="btn btn-light" (click)="createboardModal.hide()">Close</button>
+                                <button type="submit" class="btn btn-success" id="addNewBoard">Add Board</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end add board modal-->
+
+<div bsModal #creatertaskModal="bs-modal" class="modal fade" id="creatertaskModal" tabindex="-1" aria-labelledby="creatertaskModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content border-0">
+            <div class="modal-header p-3 bg-info-subtle">
+                <h5 class="modal-title" id="creatertaskModalLabel">Create New Task</h5>
+                <button type="button" class="btn-close" (click)="creatertaskModal.hide()"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="taskForm">
+                    <div class="row g-3">
+                        <div class="col-lg-12">
+                            <label for="projectName" class="form-label">Project Name</label>
+                            <input type="text" class="form-control" id="projectName" formControlName="name" placeholder="Enter project name">
+                        </div>
+                        <!--end col-->
+                        <div class="col-lg-12">
+                            <label for="sub-tasks" class="form-label">Task Title</label>
+                            <input type="text" class="form-control" id="sub-tasks" formControlName="title" placeholder="Task title">
+                        </div>
+                        <!--end col-->
+                        <div class="col-lg-12">
+                            <label for="task-description" class="form-label">Task Description</label>
+                            <textarea class="form-control" id="task-description" rows="3" formControlName="description" placeholder="Task description"></textarea>
+                        </div>
+                        <!--end col-->
+                        <div class="col-lg-12">
+                            <label for="formFile" class="form-label">Tasks Images</label>
+                            <input class="form-control" type="file" formControlName="image" id="formFile">
+                        </div>
+                        <!--end col-->
+                        <div class="col-lg-12">
+                            <label for="tasks-progress" class="form-label">Add Team Member</label>
+                            <ngx-simplebar data-simplebar-track="light" style="height: 95px;">
+                                <ul class="list-unstyled vstack gap-2 mb-0">
+                                    @for (data of mebmerList; track $index) {
+                                    <li>
+                                        <div class="form-check d-flex align-items-center">
+                                            <input class="form-check-input me-3" type="checkbox" value="{{$index}}" (change)="selectMember($index)" id="anna-adame">
+                                            <label class="form-check-label d-flex align-items-center" for="anna-adame">
+                                                <span class="flex-shrink-0">
+                                                    <img src="{{data.avatarURL}}" alt="" class="avatar-xxs rounded-circle">
+                                                </span>
+                                                <span class="flex-grow-1 ms-2">
+                                                    {{data.name}}
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </li>
+                                    }
+                                </ul>
+                            </ngx-simplebar>
+                        </div>
+                        <!--end col-->
+                        <div class="col-lg-4">
+                            <label for="due-date" class="form-label">Due Date</label>
+                            <input type="text" class="form-control" id="due-date" formControlName="date" mwlFlatpickr [altInput]="true" [convertModelValue]="true" placeholder="Select date">
+                        </div>
+                        <!--end col-->
+                        <div class="col-lg-4">
+                            <label for="categories" class="form-label">Tags</label>
+                            <input type="text" class="form-control" id="categories" formControlName="category" placeholder="Enter tag">
+                        </div>
+                        <!--end col-->
+                        <div class="col-lg-4">
+                            <label for="tasks-progress" class="form-label">Tasks Progress</label>
+                            <input type="text" class="form-control" maxlength="3" formControlName="progress" id="tasks-progress" placeholder="Enter progress">
+                        </div>
+                        <!--end col-->
+                        <div class="mt-4">
+                            <div class="hstack gap-2 justify-content-end">
+                                <button type="button" class="btn btn-light" (click)="creatertaskModal.hide()">Close</button>
+                                <button type="submit" class="btn btn-success">Add Task</button>
+                            </div>
+                        </div>
+                        <!--end col-->
+                    </div>
+                    <!--end row-->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end add board modal-->
+
+<div bsModal #deleteRecordModal="bs-modal" class="modal fade zoomIn" id="deleteRecordModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="delete-btn-close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mt-2 text-center">
+                    <i class="ti ti-trash fs-2 text-danger"></i>
+                    <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
+                        <h5>Are you sure ?</h5>
+                        <p class="text-muted mx-4 mb-0">Are you sure you want to remove this tasks ?</p>
+                    </div>
+                </div>
+                <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
+                    <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn w-sm btn-danger" id="delete-record" (click)="ConfirmDelete()">Yes, Delete It!</button>
+                </div>
+            </div>
+        </div>
+    </div>

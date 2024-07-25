@@ -1,0 +1,63 @@
+<section class="auth-page-wrapper auth-card py-5 position-relative bg-light d-flex align-items-center justify-content-center min-vh-100" style="background-size: cover;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card mb-0 bg-transparent border-0">
+                    <div class="card-body">
+                        <div id="countDownText">
+                            <div class="mb-5 text-center">
+                                <h1 class="text-white">Coming Soon</h1>
+                            </div>
+
+                            <div class="mb-sm-5 pb-sm-0 pb-5 text-center">
+                                <img src="assets/images/comingsoon.png" alt="" class="move-animation" height="150">
+                            </div>
+
+                            <div class="text-center mt-5">
+                                <h4 class="text-white">Get notified when we launch</h4>
+                                <p class="text-white-50 mb-0">Don't worry we will not spam you 😊</p>
+                            </div>
+                            <div class="row justify-content-center mt-5">
+                                <div class="col-lg-10">
+                                    <div data-countdown="Oct 30, 2024" class="countdownlist">
+                                        <div class="countdownlist-item">
+                                            <div class="count-title">Days</div>
+                                            <div class="count-num">{{_days}}</div>
+                                        </div>
+                                        <div class="countdownlist-item">
+                                            <div class="count-title">Hours</div>
+                                            <div class="count-num">{{_hours}}</div>
+                                        </div>
+                                        <div class="countdownlist-item">
+                                            <div class="count-title">Minutes</div>
+                                            <div class="count-num">{{_minutes}}</div>
+                                        </div>
+                                        <div class="countdownlist-item">
+                                            <div class="count-title">Seconds</div>
+                                            <div class="count-num">{{_seconds}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <form action="#!" class="mt-5 mb-5">
+                                <div class="countdown-input-subscribe mx-auto">
+                                    <input type="email" class="form-control" placeholder="Enter your email address" required />
+                                    <button class="btn btn-primary" type="submit" id="button-email">Send<i class="ri-send-plane-2-fill align-bottom ms-2"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end col-->
+        </div>
+        <!--end row-->
+    </div>
+    <!--end container-->
+    <div class="text-center position-absolute start-50 bottom-0 translate-middle">
+        <p class="text-white opacity-75 mb-0 mt-3">
+            &copy;
+            {{year}} Vixon. Crafted with <i class="ti ti-heart-filled text-danger"></i> by Themesbrand
+        </p>
+    </div>
+</section>
