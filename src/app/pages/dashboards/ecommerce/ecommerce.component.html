@@ -1,0 +1,394 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="Ecommerce" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+<!-- End Breadcrumbs -->
+
+<div class="row">
+    <div class="col-xxl-5">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="avatar-sm float-end">
+                            <div class="avatar-title bg-primary-subtle text-primary fs-3xl rounded"><i class="ti ti-wallet"></i></div>
+                        </div>
+                        <p class="fs-md text-uppercase text-muted mb-0">Total Revenue</p>
+
+                        <h4 class="my-4"><span class="counter-value" [countUp]="368.24" [options]="option"></span>k </h4>
+                        <p class="text-success fs-sm mb-0"><i class="bi bi-arrow-up me-1"></i> 06.41% Last Month</p>
+                    </div>
+                </div>
+            </div><!--end col-->
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="avatar-sm float-end">
+                            <div class="avatar-title bg-warning-subtle text-warning fs-3xl rounded"><i class="ti ti-building-store"></i></div>
+                        </div>
+                        <p class="fs-md text-uppercase text-muted mb-0">Total Orders</p>
+
+                        <h4 class="my-4"><span class="counter-value" [countUp]="01.47" [options]="option"></span>sec </h4>
+                        <p class="text-success fs-sm mb-0"><i class="bi bi-arrow-up me-1"></i> 13% Last Month</p>
+                    </div>
+                </div>
+            </div><!--end col-->
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="avatar-sm float-end">
+                            <div class="avatar-title bg-success-subtle text-success fs-3xl rounded"><i class="ti ti-users-group"></i></div>
+                        </div>
+                        <p class="fs-md text-uppercase text-muted mb-0">Total Customers</p>
+
+                        <h4 class="my-4"><span class="counter-value" [countUp]="1647"></span></h4>
+                        <p class="text-danger fs-sm mb-0"><i class="bi bi-arrow-down me-1"></i> 07.26% Last Week</p>
+                    </div>
+                </div>
+            </div><!--end col-->
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="avatar-sm float-end">
+                            <div class="avatar-title bg-secondary-subtle text-secondary fs-3xl rounded"><i class="ti ti-box-seam"></i></div>
+                        </div>
+                        <p class="fs-md text-uppercase text-muted mb-0">Products</p>
+
+                        <h4 class="my-4"><span class="counter-value" [countUp]="291.32" [options]="option"></span>k </h4>
+                        <p class="text-success fs-sm mb-0"><i class="bi bi-arrow-up me-1"></i> 13% Last Month</p>
+                    </div>
+                </div>
+            </div><!--end col-->
+        </div><!--end row-->
+    </div>
+
+    <div class="col-xxl-7">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header d-flex align-items-center">
+                        <h6 class="card-title flex-grow-1 mb-0">Monthly Profit</h6>
+                        <div class="flex-shrink-0">
+                            <button type="button" class="btn btn-subtle-info btn-sm"><i class="bi bi-file-earmark-text me-1 align-baseline"></i> Generate Reports</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="monthly_profit" class="apex-charts" dir="ltr">
+                            <apx-chart [series]="monthlyprofitChart.series" [chart]="monthlyprofitChart.chart" [plotOptions]="monthlyprofitChart.plotOptions" [fill]="monthlyprofitChart.fill" [dataLabels]="monthlyprofitChart.dataLabels" [legend]="monthlyprofitChart.legend" [yaxis]="monthlyprofitChart.yaxis" [grid]="monthlyprofitChart.grid" [theme]="monthlyprofitChart.theme" [xaxis]="monthlyprofitChart.xaxis" [colors]="monthlyprofitChart.colors" dir="ltr"></apx-chart>
+                        </div>
+                    </div>
+                </div><!--end col-->
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header d-flex align-items-center">
+                        <h6 class="card-title flex-grow-1 mb-0">Product Overview</h6>
+                        <div dropdown class="dropdown flex-shrink-0">
+                            <a dropdownToggle class="text-reset dropdown-btn" href="javascript:void(0);">
+                                <span class="text-muted fs-lg"><i class="ti ti-dots align-middle"></i></span>
+                            </a>
+                            <div *bsDropdownMenu class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="javascript:void(0);">Today</a>
+                                <a class="dropdown-item" href="javascript:void(0);">Last Week</a>
+                                <a class="dropdown-item" href="javascript:void(0);">Last Month</a>
+                                <a class="dropdown-item" href="javascript:void(0);">Current Year</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="column_stacked_chart" class="apex-charts" dir="ltr">
+                            <apx-chart [series]="columnstackedChart.series" [chart]="columnstackedChart.chart" [plotOptions]="columnstackedChart.plotOptions" [fill]="columnstackedChart.fill" [dataLabels]="columnstackedChart.dataLabels" [legend]="columnstackedChart.legend" [yaxis]="columnstackedChart.yaxis" [grid]="columnstackedChart.grid" [theme]="columnstackedChart.theme" [xaxis]="columnstackedChart.xaxis" [colors]="columnstackedChart.colors" dir="ltr"></apx-chart>
+                        </div>
+                    </div>
+                </div><!--end col-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-7">
+        <div class="card">
+            <div class="card-header d-flex align-items-center flex-wrap gap-3">
+                <h5 class="card-title mb-0 flex-grow-1">Revenue Overview</h5>
+                <div>
+                    <button type="button" class="btn btn-subtle-secondary btn-sm me-1">
+                        ALL
+                    </button>
+                    <button type="button" class="btn btn-subtle-secondary btn-sm me-1">
+                        1M
+                    </button>
+                    <button type="button" class="btn btn-subtle-secondary btn-sm me-1">
+                        6M
+                    </button>
+                    <button type="button" class="btn btn-subtle-primary btn-sm">
+                        1Y
+                    </button>
+                </div>
+            </div><!--end card-header-->
+            <div class="card-body ps-0">
+                <div id="customer_impression_charts" class="apex-charts" dir="ltr">
+                    <apx-chart [series]="customerimpressionCharts.series" [chart]="customerimpressionCharts.chart" [stroke]="customerimpressionCharts.stroke" [fill]="customerimpressionCharts.fill" [markers]="customerimpressionCharts.markers" [legend]="customerimpressionCharts.legend" [plotOptions]="customerimpressionCharts.plotOptions" [grid]="customerimpressionCharts.grid" [theme]="customerimpressionCharts.theme" [xaxis]="customerimpressionCharts.xaxis" [colors]="customerimpressionCharts.colors" dir="ltr"></apx-chart>
+                </div>
+            </div>
+        </div>
+    </div><!--end col-->
+    <div class="col-xl-5">
+        <div class="d-flex align-items-center mb-3">
+            <h6 class="card-title flex-grow-1 mb-0">Top Selling Products</h6>
+            <a href="javascript:void(0);" class="fs-sm flex-shrink-0">View All <i class="ti ti-arrow-narrow-right"></i></a>
+        </div>
+        <!-- Swiper -->
+        <div class="swiper mySwiper">
+            <ngx-slick-carousel [config]="config" class="carousel swiper-wrapper space">
+                <div class="swiper-slide" ngxSlickItem>
+                    <div class="card bg-body-secondary border-0">
+                        <div class="card-body p-2">
+                            <div class="p-3 bg-body">
+                                <img src="assets/images/products/img-3.png" alt="" class="img-fluid px-3">
+                            </div>
+                            <div class="mt-2">
+                                <span class="float-end fw-semibold clearfix">$25.65</span>
+                                <h6><a href="javascript:void(0);">Smart Watch for Man's</a></h6>
+                                <p class="text-muted fs-md mb-0"><a href="javascript:void(0);" class="text-reset text-decoration-underline">Watches</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide" ngxSlickItem>
+                    <div class="card bg-body-secondary border-0">
+                        <div class="card-body p-2">
+                            <div class="p-3 bg-body">
+                                <img src="assets/images/products/img-1.png" alt="" class="img-fluid px-3">
+                            </div>
+                            <div class="mt-2">
+                                <span class="float-end fw-semibold clearfix">$97.62</span>
+                                <h6 class="text-truncate"><a href="javascript:void(0);">World's most expensive t shirt</a></h6>
+                                <p class="text-muted fs-md mb-0"><a href="javascript:void(0);" class="text-reset text-decoration-underline">Fashion & Clothing</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide" ngxSlickItem>
+                    <div class="card bg-body-secondary border-0">
+                        <div class="card-body p-2">
+                            <div class="p-3 bg-body">
+                                <img src="assets/images/products/img-10.png" alt="" class="img-fluid px-3">
+                            </div>
+                            <div class="mt-2">
+                                <span class="float-end fw-semibold clearfix">$149.99</span>
+                                <h6 class="text-truncate"><a href="javascript:void(0);">Like Style Women pink Fashion</a></h6>
+                                <p class="text-muted fs-md mb-0"><a href="javascript:void(0);" class="text-reset text-decoration-underline">Fashion & Clothing</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide" ngxSlickItem>
+                    <div class="card bg-body-secondary border-0">
+                        <div class="card-body p-2">
+                            <div class="p-3 bg-body">
+                                <img src="assets/images/products/img-8.png" alt="" class="img-fluid px-3">
+                            </div>
+                            <div class="mt-2">
+                                <span class="float-end fw-semibold clearfix">$164.74</span>
+                                <h6 class="text-truncate"><a href="javascript:void(0);">Striped High Neck Casual Men Orange Sweater</a></h6>
+                                <p class="text-muted fs-md mb-0"><a href="javascript:void(0);" class="text-reset text-decoration-underline">Fashion & Clothing</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ngx-slick-carousel>
+        </div>
+    </div>
+</div><!--end row-->
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header align-items-center d-flex">
+                <h4 class="card-title mb-0 flex-grow-1">Recent Orders</h4>
+                <div class="flex-shrink-0">
+                    <div dropdown class="dropdown card-header-dropdown">
+                        <a dropdownToggle class="text-reset dropdown-btn" href="javascript:void(0);">
+                            <span class="fw-semibold text-uppercase fs-sm">Sort by: </span><span class="text-muted">Today<i class="ti ti-chevron-down ms-1"></i></span>
+                        </a>
+                        <div *dropdownMenu class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="javascript:void(0);">Today</a>
+                            <a class="dropdown-item" href="javascript:void(0);">Yesterday</a>
+                            <a class="dropdown-item" href="javascript:void(0);">Last 7 Days</a>
+                            <a class="dropdown-item" href="javascript:void(0);">Last 30 Days</a>
+                            <a class="dropdown-item" href="javascript:void(0);">This Month</a>
+                            <a class="dropdown-item" href="javascript:void(0);">Last Month</a>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end card header -->
+
+            <div class="card-body">
+                <div class="table-responsive table-card mt-0">
+                    <table class="table table-centered align-middle table-nowrap mb-0" id="customerTable">
+                        <thead class="text-muted table-active">
+                            <tr>
+                                <th scope="col" data-sort="orderId">Order ID</th>
+                                <th scope="col" data-sort="product_name">Product Name</th>
+                                <th scope="col">Customer Name</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Order Date</th>
+                                <th scope="col">Delivery Date</th>
+                                <th scope="col">Vendor</th>
+                                <th scope="col">Ratings</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (data of orders; track $index) {
+                            <tr>
+                                <td>
+                                    <a href="javascript:void(0);" class="fw-medium link-primary">{{data.orderNumber}}</a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0);" class="text-reset">{{data.productName}}</a>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-shrink-0 me-2">
+                                            <img src="{{data.customer.avatar}}" alt="" class="avatar-xxs rounded-circle">
+                                        </div>
+                                        <div class="flex-grow-1">{{data.customer.name}}</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    {{data.price}}
+                                </td>
+                                <td>{{data.orderDate}}</td>
+                                <td>{{data.deliveryDate}}</td>
+                                <td>{{data.country}}</td>
+                                <td>{{data.rating}} <i class="bi bi-star-half ms-1 text-warning fs-12"></i></td>
+                                <td>
+                                    <span class="badge" [ngClass]="{'bg-info-subtle text-info': data.status === 'New','bg-danger-subtle text-danger': data.status === 'Out Of Delivery',
+                                    'bg-success-subtle text-success': data.status === 'Delivered','bg-warning-subtle text-warning': data.status === 'Pending','bg-primary-subtle text-primary': data.status === 'Shipping'}">{{data.status}}</span>
+                                </td>
+                            </tr>}<!-- end tr -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="align-items-center mt-4 pt-2 justify-content-between d-flex">
+                    <div class="flex-shrink-0">
+                        <div class="text-muted">
+                            Showing <span class="fw-semibold">{{service.endIndex}}</span> of <span class="fw-semibold">{{service.totalRecords}}</span> Results
+                        </div>
+                    </div>
+                    <pagination class="pagination-separated pagination-sm mb-0" previousText="&lsaquo;" nextText="&rsaquo;" [totalItems]="(total | async)!" [(ngModel)]="service.page" [itemsPerPage]="service.pageSize"></pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xxl-3 col-lg-6">
+        <div class="card card-height-100">
+            <div class="card-header align-items-center d-flex">
+                <h4 class="card-title mb-0 flex-grow-1">New Customers</h4>
+                <a href="javascript:void(0);" class="flex-shrink-0 fs-md">View All <i class="ri-arrow-right-line align-bottom ms-1"></i></a>
+            </div><!-- end card header -->
+
+            <ngx-simplebar data-simplebar-track="light" style="max-height: 380px;">
+                @for (data of customerList; track $index) {
+                <div class="p-3 border-bottom border-bottom-dashed">
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="flex-shrink-0">
+                            <img src="{{data.avatar}}" alt="" class="rounded avatar-sm">
+                        </div>
+                        <div class="flex-grow-1">
+                            <h6 class="mb-1">{{data.name}}</h6>
+                            <p class="fs-13 text-muted mb-0">{{data.date}}</p>
+                        </div>
+                        <div class="flex-shrink-0">
+                            <a href="mailto:{{data.email}}" class="btn btn-icon btn-sm btn-subtle-info"><i class="ph-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>}
+            </ngx-simplebar>
+        </div> <!-- .card-->
+    </div> <!-- .col-->
+    <div class="col-xxl-3 col-lg-6">
+        <div class="card card-height-100">
+            <div class="card-header align-items-center d-flex">
+                <h4 class="card-title mb-0 flex-grow-1">Top Products</h4>
+                <div class="flex-shrink-0">
+                    <div dropdown class="dropdown card-header-dropdown">
+                        <a dropdownToggle class="text-reset dropdown-btn" href="javascript:void(0);">
+                            <span class="text-muted">Report<i class="ti ti-chevron-down ms-1"></i></span>
+                        </a>
+                        <div *bsDropdownMenu class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="javascript:void(0);">Download Report</a>
+                            <a class="dropdown-item" href="javascript:void(0);">Export</a>
+                            <a class="dropdown-item" href="javascript:void(0);">Import</a>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end card header -->
+
+            <div class="card-body">
+                @for (data of productsList; track $index) {
+                <div [ngClass]="$index != productsList.length - 1 ? 'mb-4' :''">
+                    <span class="badge bg-dark-subtle text-body float-end">{{data.percentage}}%</span>
+                    <h6 class="mb-2">{{data.category}}</h6>
+                    <progressbar class="progress-sm" [value]="data.percentage" [type]="data.type" [striped]="true" [animate]="true"></progressbar>
+                </div>}
+            </div>
+        </div> <!-- .card-->
+    </div> <!-- .col-->
+    <div class="col-xxl-6">
+        <div class="card">
+            <div class="card-header align-items-center d-flex">
+                <h4 class="card-title mb-0 flex-grow-1">Stock Report</h4>
+                <div class="flex-shrink-0">
+                    <a href="javascript:void(0);" class="btn btn-subtle-info btn-sm">
+                        <i class="ri-file-list-3-line align-middle"></i> Generate Report
+                    </a>
+                </div>
+            </div><!-- end card header -->
+
+            <div class="card-body">
+                <div class="table-responsive table-card mt-0">
+                    <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
+                        <thead class="text-muted table-active">
+                            <tr>
+                                <th scope="col">Product ID</th>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Updated Date</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Stock Status</th>
+                                <th scope="col">Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (data of reportList; track $index) {
+                            <tr>
+                                <td>
+                                    <a href="javascript:void(0);" class="fw-medium link-primary">{{data.productNumber}}</a>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-shrink-0 me-2">
+                                            <img src="{{data.productImage}}" alt="" class="avatar-xs rounded-circle">
+                                        </div>
+                                        <div class="flex-grow-1"><a href="javascript:void(0);" class="text-reset">{{data.productName}}</a></div>
+                                    </div>
+                                </td>
+                                <td>{{data.date}}</td>
+                                <td>
+                                    <span class="text-secondary">{{data.price}}</span>
+                                </td>
+                                <td>
+                                    <span class="badge" [ngClass]="{'bg-success-subtle text-success':data.stockStatus == 'In Stock', 'bg-danger-subtle text-danger':data.stockStatus == 'Out of Stock','bg-warning-subtle text-warning':data.stockStatus == 'Low Stock'}">{{data.stockStatus}}</span>
+                                </td>
+                                <td>{{data.quantity}}</td>
+                            </tr>}<!-- end tr -->
+                        </tbody><!-- end tbody -->
+                    </table><!-- end table -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
