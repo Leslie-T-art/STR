@@ -1,0 +1,179 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Datepicker SCSS file. */
+@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
+
+/* Importing Select SCSS file. */
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+/**
+* Image Upload Dropzone
+*/
+@import "~dropzone/dist/min/dropzone.min.css";
+
+.NgxEditor {
+  height: 245px;
+}
+
+.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value {
+  white-space: nowrap;
+  background-color: var(--tb-primary);
+  border: 1px solid var(--tb-primary);
+  color: #fff;
+  border-radius: 7px;
+  padding: 2px 7px;
+  font-size: 11px;
+}
+
+.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value.ng-value-disabled {
+  background-color: #3281f3;
+  border: 1px solid #3281f3;
+}
+
+// File Upload
+.dropzone .dz-message {
+  font-size: 24px;
+  min-height: 150px !important;
+  border: 2px dashed var(--tb-border-color) !important;
+  background: #fff !important;
+  color: #495057 !important;
+
+}
+
+// Swiper
+.coverflowslide .slide {
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.coverflowslide .slick-list {
+  overflow: hidden !important;
+}
+
+.coverflowslide .slick-center {
+  transform: scale(1.2); // Adjust the scale factor for the "Coverflow" effect
+  z-index: 1;
+}
+
+.coverflowslide .carousel {
+  width: 100%;
+  max-width: 600px; // Adjust the carousel width as needed
+  margin: 0 auto;
+}
+
+.space .slick-slide {
+  // margin: 25px;
+  padding: 0px 7px;
+}
+
+//RANGE SLIDER
+.ngx-slider .ngx-slider-pointer {
+  width: 15px !important;
+  height: 15px !important;
+  top: -6px !important;
+  background: var(--tb-primary) !important;
+}
+
+.ngx-slider .ngx-slider-bar {
+  background: var(--tb-light) !important;
+}
+
+.ngx-slider .ngx-slider-selection,
+.ngx-slider .ngx-slider-tick.ngx-slider-selected {
+  background: var(--tb-primary) !important;
+}
+
+.ngx-slider .ngx-slider-pointer:after {
+  display: none;
+}
+
+.ngx-slider .ngx-slider-tick {
+  background: var(--tb-tertiary-bg) !important;
+}
+
+// apex chart
+.apex-charts {
+  div {
+    min-height: 0 !important;
+  }
+}
+
+
+.simplebar-scrollbar::before {
+  width: 5px;
+  /* Adjust the width as needed */
+}
+
+.emoji-mart {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+}
+
+.emoji-mart-preview {
+  display: none;
+}
+
+.dropdown-responsive {
+  left: 0 !important;
+}
+
+.table-dropdown {
+  right: 0 !important;
+}
+
+@media (max-width: 425px) {
+  .profile-dropdown {
+    right: -13px !important;
+    // z-index: ;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .navbar-header .dropdown .dropdown-menu {
+    width: 100% !important;
+  }
+}
+
+.member-img {
+  &.img-fluid {
+    max-width: 100%;
+    height: 100%;
+  }
+}
+
+.read-email .panel-heading {
+  padding: 0px;
+}
+
+[data-simplebar-track=light] .simplebar-scrollbar:before {
+  background: #a2adb7 !important;
+}
+
+// File Upload
+.dropzone .dz-message {
+  font-size: var(--tb-font-md) !important;
+  min-height: 130px !important;
+  background: var(--tb-secondary-bg) !important;
+  color: var(--tb-primary) !important;
+  margin: 0px !important;
+}
+
+.dz-text {
+  font-size: 1.2rem !important;
+  color: #243752 !important;
+}
+
+// [data-bs-theme=dark] {
+//   .dropzone {
+//     background: #243752 !important;
+//     border-color: #2b405a !important;
+//   }
+
+//   .dz-message {
+//     background: #243752 !important;
+//     border-color: #2b405a !important;
+//     color: #d9e3f3 !important;
+//   }
+// }
