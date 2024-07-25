@@ -1,0 +1,425 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="General" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+<!-- End Breadcrumbs -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Popovers</h4>
+            </div><!-- end card header -->
+
+            <div class="card-body">
+                <p class="text-muted">Popovers example are available with follwing options , Directions are mirrored
+                    when using Bootstrap in RTL.</p>
+                <div class="hstack flex-wrap gap-2">
+                    <button type="button" class="btn btn-light tooltip-primary" placement="top" popoverTitle="Top Popover" [popover]="'Vivamus sagittis lacus vel augue laoreet rutrum faucibus.'">
+                        Popover on top
+                    </button>
+                    <button type="button" class="btn btn-light" placement="right" popoverTitle="Right Popover" [popover]="'Vivamus sagittis lacus vel augue laoreet rutrum faucibus.'">
+                        Popover on right
+                    </button>
+                    <button type="button" class="btn btn-light" placement="bottom" popoverTitle="Bottom Popover" [popover]="'Vivamus sagittis lacus vel augue laoreet rutrum faucibus.'">
+                        Popover on bottom
+                    </button>
+                    <button type="button" class="btn btn-light" placement="left" popoverTitle="Left Popover" [popover]="'Vivamus sagittis lacus vel augue laoreet rutrum faucibus.'">
+                        Popover on left
+                    </button>
+                    <button class="btn  btn-success" popoverTitle="Dismissible popover" [popover]="'And here`s some amazing content. It`s very engaging. Right?'">Dismissible
+                        popover</button>
+                </div>
+
+            </div><!-- end card-body -->
+        </div><!-- end card -->
+    </div>
+    <!-- end col -->
+</div>
+<!-- end row -->
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Tooltips</h4>
+            </div><!-- end card header -->
+
+            <div class="card-body">
+                <p class="text-muted">Tooltip example are available with follwing options, Directions are mirrored when
+                    using Bootstrap in RTL.</p>
+                <div class="hstack flex-wrap gap-2">
+                    <button type="button" class="btn btn-light" placement="top" tooltip="Tooltip on top">
+                        Tooltip on top
+                    </button>
+                    <button type="button" class="btn btn-light" placement="right" tooltip="Tooltip on right">
+                        Tooltip on right
+                    </button>
+                    <button type="button" class="btn btn-light" placement="bottom" tooltip="Tooltip on bottom">
+                        Tooltip on bottom
+                    </button>
+                    <button type="button" class="btn btn-light" placement="left" tooltip="Tooltip on left">
+                        Tooltip on left
+                    </button>
+                    <button type="button" class="btn btn-primary" data-bs-html="true" tooltip="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
+                        Tooltip with HTML
+                    </button>
+                </div>
+            </div><!-- end card-body -->
+        </div><!-- end card -->
+    </div>
+    <!-- end col -->
+</div>
+<!-- end row -->
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Breadcrumb</h4>
+            </div><!-- end card header -->
+
+            <div class="card-body">
+                <p class="text-muted">Indicate the current page’s location within a navigational hierarchy</p>
+                <div>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb p-3 py-2 bg-light">
+                            <li class="breadcrumb-item active" aria-current="page">Home</li>
+                        </ol>
+                    </nav>
+
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb p-3 py-2 bg-light">
+                            <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Library</li>
+                        </ol>
+                    </nav>
+
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb p-3 py-2 bg-light">
+                            <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0);">Base UI</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">General</li>
+                        </ol>
+                    </nav>
+
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb p-3 py-2 bg-light mb-0">
+                            <li class="breadcrumb-item"><a href="javascript:void(0);"><i class="ri-home-5-fill"></i></a>
+                            </li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0);">Base UI</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">General</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div><!-- end card-body -->
+        </div><!-- end card -->
+    </div>
+    <!-- end col -->
+</div>
+<!-- end row -->
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Pagination</h4>
+            </div><!-- end card header -->
+
+            <div class="card-body">
+                <div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h5 class="fs-base">Default Pagination</h5>
+                            <p class="text-muted">Use <code>pagination</code> class to ul element to indicate a series
+                                of related content exists across multiple pages.</p>
+
+                            <pagination class="pagination" [totalItems]="30"></pagination>
+
+                            <pagination class="pagination" [totalItems]="30" [customPreviousTemplate]="prevTemplate" [customNextTemplate]="nextTemplate"></pagination>
+                            <ng-template #nextTemplate let-disabled="disabled" let-currentPage="currentPage">
+                                <ng-container>
+                                    Next &nbsp; →
+                                </ng-container>
+                            </ng-template>
+
+                            <ng-template #prevTemplate let-disabled="disabled" let-currentPage="currentPage">
+                                <ng-container>
+                                    ← &nbsp; Prev
+                                </ng-container>
+                            </ng-template>
+
+                        </div>
+                        <!-- end col -->
+
+                        <div class="col-lg-6">
+                            <div class="mt-4 mt-lg-0">
+                                <h5 class="fs-base">Disabled and Active states</h5>
+                                <p class="text-muted">Use <code>disabled</code> class to links that appear un-clickable
+                                    and <code>active</code> class to indicate the current page.</p>
+
+                                <!-- Pagination Disabled & Active -->
+                                <nav aria-label="...">
+                                    <pagination [disabled]="true" [totalItems]="30" [customPreviousTemplate]="prevTemplate" [customNextTemplate]="nextTemplate">
+                                    </pagination>
+                                </nav>
+
+                                <nav aria-label="...">
+                                    <pagination [boundaryLinks]="true" [totalItems]="30" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+                                </nav>
+                            </div>
+                        </div>
+                        <!-- end row -->
+                    </div>
+                    <!-- end row -->
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mt-4">
+                                <h5 class="fs-base">Sizing</h5>
+                                <p class="text-muted">Use <code>pagination-lg</code> or <code>pagination-sm</code> to
+                                    set different pagination sizes.</p>
+                                <!-- Pagination Large -->
+                                <nav aria-label="...">
+                                    <pagination class="pagination pagination-lg" [totalItems]="30" previousText="← &nbsp; Prev" nextText="Next &nbsp; →"></pagination>
+                                </nav>
+
+                                <!-- Pagination Small -->
+                                <nav aria-label="...">
+                                    <pagination class="pagination pagination-sm" [totalItems]="30" previousText="← &nbsp; Prev" nextText="Next &nbsp; →"></pagination>
+                                </nav>
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="mt-4">
+                                <h5 class="fs-base">Alignment</h5>
+
+                                <p class="text-muted">Use <code>justify-content-start</code>,
+                                    <code>justify-content-start</code>, or <code>justify-content-start</code>, class to
+                                    pagination class to change the alignment of pagination respectively.
+                                </p>
+                                <!-- Pagination Alignment -->
+
+                                <!-- Center Alignment -->
+                                <nav aria-label="Page navigation example">
+                                    <pagination class="pagination justify-content-center" [totalItems]="30" previousText="← &nbsp; Prev" nextText="Next &nbsp; →">
+                                    </pagination>
+                                </nav>
+
+                                <!-- Right Alignment -->
+                                <nav aria-label="Page navigation example">
+                                    <pagination class="pagination justify-content-end" [totalItems]="30" previousText="← &nbsp; Prev" nextText="Next &nbsp; →"></pagination>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end row -->
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mt-4">
+                                <h5 class="fs-base">Custom Separated Pagination</h5>
+                                <p class="text-muted">Use <code>pagination-separated</code> class to pagination class to
+                                    set custom separated pagination.</p>
+                                <!-- Custom Separated Pagination Large -->
+                                <pagination class="pagination pagination-lg pagination-separated" [customPreviousTemplate]="prevTemplate1" [customNextTemplate]="nextTemplate1" [totalItems]="50">
+                                </pagination>
+
+                                <!-- Pagination rounded -->
+                                <pagination class="pagination pagination-separated" [customPreviousTemplate]="prevTemplate1" [customNextTemplate]="nextTemplate1" [totalItems]="50"></pagination>
+
+                                <!-- Custom Separated Pagination Large -->
+                                <pagination class="pagination pagination-sm pagination-separated" [customPreviousTemplate]="prevTemplate1" [customNextTemplate]="nextTemplate1" [totalItems]="50">
+                                </pagination>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="mt-4">
+                                <h5 class="fs-base">Custom Rounded Pagination</h5>
+                                <p class="text-muted">Use <code>pagination-rounded</code> class to pagination class to
+                                    set custom rounded pagination.</p>
+                                <!-- Pagination rounded -->
+                                <pagination class="pagination pagination-lg pagination-rounded" [customPreviousTemplate]="prevTemplate1" [customNextTemplate]="nextTemplate1" [totalItems]="50"></pagination>
+                                <ng-template #nextTemplate1 let-disabled="disabled" let-currentPage="currentPage">
+                                    <ng-container>
+                                        →
+                                    </ng-container>
+                                </ng-template>
+
+                                <ng-template #prevTemplate1 let-disabled="disabled" let-currentPage="currentPage">
+                                    <ng-container>
+                                        ←
+                                    </ng-container>
+                                </ng-template>
+
+                                <!-- Pagination rounded -->
+                                <pagination class="pagination pagination-rounded" [customPreviousTemplate]="prevTemplate1" [customNextTemplate]="nextTemplate1" [totalItems]="50"></pagination>
+
+
+                                <!-- Pagination rounded -->
+                                <pagination class="pagination pagination-sm pagination-rounded" [customPreviousTemplate]="prevTemplate1" [customNextTemplate]="nextTemplate1" [totalItems]="50"></pagination>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end card-body -->
+        </div><!-- end card -->
+    </div>
+    <!-- end col -->
+</div>
+<!-- end row -->
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Spinners</h4>
+            </div><!-- end card header -->
+
+            <div class="card-body">
+
+                <div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div>
+                                <h5 class="fs-base">Border spinner</h5>
+                                <p class="text-muted">Use <code>spinner-border</code> class for a lightweight loading
+                                    indicator.</p>
+                                <div class="d-flex flex-wrap gap-3 mb-2">
+                                    <!-- Border spinner -->
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <div class="spinner-border text-secondary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <div class="spinner-border text-success" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <div class="spinner-border text-info" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <div class="spinner-border text-warning" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <div class="spinner-border text-danger" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <div class="spinner-border text-body" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <div class="spinner-border text-light" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end col -->
+                        <div class="col-lg-6">
+                            <div>
+                                <h5 class="fs-base">Growing spinner</h5>
+                                <p class="text-muted">Use <code>spinner-grow</code> class for a lightweight spinner with
+                                    growing effect.</p>
+                                <div class="d-flex flex-wrap gap-3 mb-2">
+                                    <!-- Growing spinner -->
+                                    <div class="spinner-grow text-primary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <div class="spinner-grow text-secondary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <div class="spinner-grow text-success" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <div class="spinner-grow text-info" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <div class="spinner-grow text-warning" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <div class="spinner-grow text-danger" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <div class="spinner-grow text-body" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <div class="spinner-grow text-light" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end col -->
+                    </div>
+                    <!-- end row -->
+                </div>
+            </div><!-- end card-body -->
+        </div><!-- end card -->
+    </div>
+    <!-- end col -->
+</div>
+<!-- end row -->
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Spinners Size</h4>
+            </div><!-- end card header -->
+
+            <div class="card-body">
+                <p class="text-muted">Add <code>.spinner-border-sm</code> and
+                    <code>.spinner-grow-sm</code> to make a smaller spinner that can quickly be used
+                    within other components.
+                </p>
+
+                <div class="d-flex gap-4">
+                    <div class="spinner-border spinner-border-sm" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <div class="spinner-grow spinner-grow-sm" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+
+                    <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </div><!-- end card-body -->
+        </div><!-- end card -->
+    </div>
+    <!-- end col -->
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Spinners Buttons</h4>
+            </div><!-- end card header -->
+
+            <div class="card-body">
+                <p class="text-muted">Use spinners within buttons to indicate an action is currently
+                    processing or taking place. You may also swap the text out of the spinner
+                    element and utilize button text as needed.</p>
+
+                <div class="d-flex gap-2">
+                    <button class="btn btn-primary" type="button" disabled>
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        <span class="visually-hidden">Loading...</span>
+                    </button>
+                    <button class="btn btn-primary" type="button" disabled>
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Loading...
+                    </button>
+                    <button class="btn btn-primary" type="button" disabled>
+                        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                        <span class="visually-hidden">Loading...</span>
+                    </button>
+                    <button class="btn btn-primary" type="button" disabled>
+                        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span> Loading...
+                    </button>
+                </div>
+            </div><!-- end card-body -->
+        </div><!-- end card -->
+    </div>
+    <!-- end col -->
+</div>
+<!-- end row -->
