@@ -1,0 +1,104 @@
+//
+// _to-do.scss
+//
+
+.todo-sidebar,
+.todo-rightsidebar {
+    position: relative;
+    background-color: var(--#{$prefix}body-bg);
+
+    @media (min-width: 992px) {
+        min-width: 260px;
+        max-width: 260px;
+        // height: calc(100vh - #{$header-height} - #{$footer-height} - 8px);
+    }
+
+    @media (max-width: 991.98px) {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 200px;
+        max-width: 100%;
+        z-index: 1004;
+        box-shadow: $box-shadow-lg;
+        transform: translateX(-100%);
+        visibility: hidden;
+        height: 100vh;
+        overflow-y: auto;
+
+        &.menubar-show {
+            visibility: visible;
+            transform: none;
+        }
+    }
+}
+
+.todo-rightsidebar {
+    .choices__inner {
+        padding: 0.2rem 4.5rem 0rem 0.5rem;
+    }
+}
+
+.to-do-menu {
+    li {
+        .nav-link {
+            color: var(--#{$prefix}body-color);
+            padding-left: 0;
+            font-weight: $font-weight-medium;
+            background-color: var(--#{$prefix}light);
+            padding: 10px 12px;
+            border-radius: 4px;
+            display: block;
+            margin-bottom: 8px;
+            &:hover, &.active {
+                color: $success;
+            }
+        }
+    }
+}
+
+.todo-content {
+    height: 100%;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        -webkit-appearance: none;
+    }
+
+    &::-webkit-scrollbar:vertical {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar:horizontal {
+        height: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: rgba(var(--#{$prefix}dark-rgb), .075);
+        border-radius: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        border-radius: 8px;
+    }
+}
+
+.todo-task {
+    table{
+        .form-check{
+            .form-check-input {
+                &:checked+.form-check-label {
+                    text-decoration: line-through;
+                }
+            }
+        }
+    }
+}
+
+.task-handle{
+    cursor: move;
+}
+
+#task-error-msg{
+    display: none;
+}
