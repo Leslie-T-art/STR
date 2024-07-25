@@ -1,0 +1,259 @@
+// 
+// root.scss
+//
+
+//theme-light
+:root {
+    --#{$prefix}card-logo-dark:                     block;
+    --#{$prefix}card-logo-light:                    none;
+
+    $font-sizes: ("3xs": 0.625rem,
+        "2xs": 0.6875rem,
+        "xs": 0.75rem,
+        "sm": 0.8125rem,
+        "md": 0.875rem,
+        "base": 0.9375rem,
+        "lg": 1rem,
+        "xl": 1.0625rem,
+        "2xl": 1.125rem,
+        "3xl": 1.25rem,
+        "4xl": 1.375rem,
+        "5xl": 1.5rem,
+    );
+
+    $font-weights: ("light" 300,
+        "normal" 400,
+        "medium" 500,
+        "semibold" 600,
+        "bold" 700,
+    );
+
+    // Font Family
+    --#{$prefix}font-sans-serif: "Public Sans", sans-serif;
+    --#{$prefix}font-monospace: "Public Sans", sans-serif;
+
+    --#{$prefix}shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    --#{$prefix}shadow-sm: 0 .125rem .25rem rgba(#{$black}, .075);
+    --#{$prefix}shadow-lg: 0 5px 10px rgba(30, 32, 37, 0.12);
+    --#{$prefix}element-shadow: rgba(149, 157, 165, 0.2) 0px 3px 20px;
+
+    --#{$prefix}grid-gutter-width: 1.375rem;
+
+    --#{$prefix}card-border-width-custom: 1px;
+    --#{$prefix}card-header-border-width: 0;
+    --#{$prefix}card-bottom-padding: 0;
+    --#{$prefix}card-shadow: none;
+
+    //mailbox 
+    --#{$prefix}email-bg: #f8f9fd;
+    --#{$prefix}email-sidebar-bg: #ebf2fb;
+
+    // vertical
+    --#{$prefix}vertical-menu-width: 250px;
+    --#{$prefix}vertical-menu-width-md: 180px;
+    --#{$prefix}vertical-menu-width-sm: 90px;
+    --#{$prefix}header-height: 70px;
+    //two columns
+    --#{$prefix}twocolumn-menu-width: 220px;
+    --#{$prefix}twocolumn-menu-iconview-width: 70px;
+    --#{$prefix}twocolumn-menu-box-shadow: 0 2px 4px rgba(15, 34, 58, 0.12);
+
+    //topbar
+    --#{$prefix}page-title-box-shadow: 0 1px 2px rgba(56, 65, 74, 0.15);
+    --#{$prefix}page-title-border: none;
+
+    //  vertical
+    --#{$prefix}vertical-menu-box-shadow: 0 2px 4px rgba(15, 34, 58, 0.12);
+    --#{$prefix}vertical-menu-item-font-size: 0.875rem;
+    --#{$prefix}vertical-menu-sub-item-font-size: 0.875rem;
+    --#{$prefix}vertical-menu-item-font-weight: 400;
+
+
+    //footer
+    --#{$prefix}footer-bg: #{$white};
+    --#{$prefix}footer-color: #98a6ad;
+
+    // twocolumn menu
+    --#{$prefix}twocolumn-menu-bg: #{$white};
+
+    // boxed 
+    --#{$prefix}boxed-body-bg: #f5f5f5;
+
+
+    &:is([data-sidebar="gradient"], [data-sidebar="gradient-2"], [data-sidebar="gradient-3"], [data-sidebar="gradient-4"]) {
+        --#{$prefix}vertical-menu-item-color: #{rgba($white, .50)};
+        --#{$prefix}vertical-menu-item-hover-color: #{$white};
+        --#{$prefix}vertical-menu-item-active-color: #{$white};
+        --#{$prefix}vertical-menu-item-active-bg: #{rgba($white, .15)};
+        --#{$prefix}vertical-menu-sub-item-color: #{rgba($white, .50)};
+        --#{$prefix}vertical-menu-sub-item-hover-color: #{$white};
+        --#{$prefix}vertical-menu-sub-item-active-color: #{$white};
+        --#{$prefix}vertical-menu-title-color: #{rgba($white, .50)};
+    }
+
+
+    @each $name,
+    $value in $font-sizes {
+        --#{$prefix}font-#{$name}: #{$value};
+    }
+
+    @each $name,
+    $value in $font-weights {
+        --#{$prefix}font-weight-#{$name}: #{$value};
+    }    
+}
+
+// Topbar - (Default Light)
+[data-topbar="warning"] {
+    --#{$prefix}header-bg: var(--#{$prefix}warning-bg-subtle);
+    --#{$prefix}header-item-color: #{rgba($body-color, 1)};
+    --#{$prefix}header-border-color: #{$gray-200};
+    --#{$prefix}header-item-sub-color: var(--#{$prefix}secondary-color);
+    // Topbar User
+    --#{$prefix}topbar-user-bg: #{rgba($body-color, 0)};
+    --#{$prefix}topnav-bg: #{$white};
+    --#{$prefix}topnav-item-color: #{darken($gray-600, 10%)};
+    --#{$prefix}topnav-item-color-active: #{$primary};
+}
+
+[data-topbar="danger"] {
+    --#{$prefix}header-bg: var(--#{$prefix}danger-bg-subtle);
+    --#{$prefix}header-item-color: var(--#{$prefix}secondary-color);
+    --#{$prefix}header-border-color: #{$gray-200};
+    --#{$prefix}header-item-sub-color: var(--#{$prefix}secondary-color);
+    // Topbar User
+    --#{$prefix}topbar-user-bg: #{rgba($body-color, 0)};
+    --#{$prefix}topnav-bg: #{$white};
+    --#{$prefix}topnav-item-color: #{darken($gray-600, 10%)};
+    --#{$prefix}topnav-item-color-active: #{$primary};
+}
+
+[data-topbar="success"] {
+    --#{$prefix}header-bg: var(--#{$prefix}success-bg-subtle);
+    --#{$prefix}header-item-color: var(--#{$prefix}secondary-color);
+    --#{$prefix}header-border-color: #{$gray-200};
+    --#{$prefix}header-item-sub-color: var(--#{$prefix}secondary-color);
+    // Topbar User
+    --#{$prefix}topbar-user-bg: #{rgba($body-color, 0)};
+    --#{$prefix}topnav-bg: #{$white};
+    --#{$prefix}topnav-item-color: #{darken($gray-600, 10%)};
+    --#{$prefix}topnav-item-color-active: #{$primary};
+}
+
+//vertical light
+[data-sidebar="light"] {
+    --#{$prefix}vertical-menu-bg: #{$white};
+    --#{$prefix}vertical-menu-border: #{$border-color};
+    --#{$prefix}vertical-menu-item-color: #{darken($gray-600, 10%)};
+    --#{$prefix}vertical-menu-item-hover-color: var(--#{$prefix}primary);
+    --#{$prefix}vertical-menu-item-hover-bg: var(--#{$prefix}primary);
+    --#{$prefix}vertical-menu-item-active-color: var(--#{$prefix}primary);
+    --#{$prefix}vertical-menu-item-active-bg: #{rgba($primary, .15)};
+    --#{$prefix}vertical-menu-sub-item-color: #{darken($gray-600, 4%)};
+    --#{$prefix}vertical-menu-sub-item-hover-color: var(--#{$prefix}primary);
+    --#{$prefix}vertical-menu-sub-item-active-color: var(--#{$prefix}primary);
+    --#{$prefix}vertical-menu-title-color: #919da9;
+    --#{$prefix}twocolumn-menu-iconview-bg: #{$white};
+}
+
+[data-sidebar="dark"] {
+    --#{$prefix}vertical-menu-bg: #{shift-color(#654dad, 50%)};
+    --#{$prefix}vertical-menu-border: #{shift-color(#654dad, 50%)};
+    --#{$prefix}vertical-menu-item-color: #{tint-color(#654dad, 50%)};
+    --#{$prefix}vertical-menu-item-hover-color: #{tint-color(#654dad, 95%)};
+    --#{$prefix}vertical-menu-item-hover-bg: #{shift-color(#654dad, 55%)};
+    --#{$prefix}vertical-menu-item-active-color: #{tint-color(#654dad, 95%)};
+    --#{$prefix}vertical-menu-item-active-bg: #{shift-color(#654dad, 55%)};
+    --#{$prefix}vertical-menu-sub-item-color: #{tint-color(#654dad, 50%)};
+    --#{$prefix}vertical-menu-sub-item-hover-color: #{tint-color(#654dad, 95%)};
+    --#{$prefix}vertical-menu-sub-item-active-color: #{tint-color(#654dad, 95%)};
+    --#{$prefix}vertical-menu-title-color: #{tint-color(#654dad, 50%)};
+    --#{$prefix}twocolumn-menu-iconview-bg: #{shift-color(#654dad, 45%)};
+}
+
+[data-sidebar="gradient"] {
+    --#{$prefix}vertical-menu-bg: linear-gradient(to left, #{$cyan-700}, #{$cyan-800});
+    --#{$prefix}vertical-menu-border: #{$cyan-700};
+    --#{$prefix}vertical-menu-item-hover-bg: linear-gradient(to left, #{$cyan-700}, #{$cyan-800});
+    --#{$prefix}twocolumn-menu-iconview-bg: #{$cyan-800};
+}
+
+[data-sidebar="gradient-2"] {
+    --#{$prefix}vertical-menu-bg: linear-gradient(to left, #{$teal-700}, #{$teal-800});
+    --#{$prefix}vertical-menu-border: #{$teal-700};
+    --#{$prefix}vertical-menu-item-hover-bg: linear-gradient(to left, #{$teal-700}, #{$teal-800});
+    --#{$prefix}twocolumn-menu-iconview-bg: #{$teal-800};
+}
+
+[data-sidebar="gradient-3"] {
+    --#{$prefix}vertical-menu-bg: linear-gradient(to left, #{$purple-700}, #{$purple-800});
+    --#{$prefix}vertical-menu-border: #{$purple-700};
+    --#{$prefix}vertical-menu-item-hover-bg: linear-gradient(to left, #{$purple-700}, #{$purple-800});
+    --#{$prefix}twocolumn-menu-iconview-bg: #{$purple-800};
+}
+
+[data-sidebar="gradient-4"] {
+    --#{$prefix}vertical-menu-bg: linear-gradient(to right, #{$green-700}, #{$green-800});
+    --#{$prefix}vertical-menu-border: #{$green-700};
+    --#{$prefix}vertical-menu-item-hover-bg: linear-gradient(to right, #{$green-700}, #{$green-800});
+    --#{$prefix}twocolumn-menu-iconview-bg: #{$green-800};
+}
+
+//theme dark
+@if $enable-dark-mode {
+    @include color-mode(dark, true) {
+        
+        --#{$prefix}light:                          #{$light-dark};
+        --#{$prefix}light-rgb:                      #{to-rgb($light-dark)};
+        --#{$prefix}light-text-emphasis:            #{$light-text-emphasis-dark};
+        --#{$prefix}light-bg-subtle:                #{$light-bg-subtle-dark};
+        --#{$prefix}light-border-subtle:            #{$light-bg-subtle-dark};
+
+        --#{$prefix}dark:                           #{$dark-color};
+        --#{$prefix}dark-rgb:                       #{to-rgb($dark-color)};
+        --#{$prefix}dark-text-emphasis:             #{$dark-text-emphasis-dark};
+        --#{$prefix}dark-bg-subtle:                 #{$dark-bg-subtle-dark};
+        --#{$prefix}dark-border-subtle:             #{$dark-border-subtle-dark};
+
+        // card
+        --#{$prefix}card-logo-dark:                 none;
+        --#{$prefix}card-logo-light:                block;
+
+        //footer
+        --#{$prefix}footer-bg:                      #191c22;
+        --#{$prefix}footer-color:                   #{$gray-600};
+
+        --#{$prefix}email-bg:                       #{tint-color($body-bg-dark, 3.5%)};
+        --#{$prefix}email-sidebar-bg:               #{tint-color($body-bg-dark, 5.5%)};
+
+        // boxed 
+        --#{$prefix}boxed-body-bg:                  #{darken($body-bg-dark, 1.5%)};
+
+        //custom components styles
+        .btn-light,
+        .btn-outline-light {
+            --#{$prefix}btn-color: #{$white};
+            --#{$prefix}btn-hover-color: #{$white};
+        }
+
+        .table-light {
+            --#{$prefix}table-color:                       #{lighten($light-dark, 60%)};
+            --#{$prefix}table-bg:                          var(--#{$prefix}light);
+            --#{$prefix}table-border-color:                var(--#{$prefix}border-color);
+            --#{$prefix}table-striped-bg:                  var(--#{$prefix}light);
+            --#{$prefix}table-striped-color:               #{lighten($light-dark, 100%)};
+            --#{$prefix}table-active-bg:                   var(--#{$prefix}light);
+            --#{$prefix}table-active-color:                #{lighten($light-dark, 100%)};
+            --#{$prefix}table-hover-bg:                    var(--#{$prefix}light);
+            --#{$prefix}table-hover-color:                 #{lighten($light-dark, 100%)};
+        }
+
+        &[data-topbar="warning"], &[data-topbar="danger"], &[data-topbar="success"]{ 
+            --#{$prefix}header-item-color: var(--#{$prefix}secondary-color);
+            --#{$prefix}header-border-color: #{$light-dark};
+            --#{$prefix}topnav-bg: #{$light-dark};
+            --#{$prefix}topnav-item-color: #{darken($gray-300, 10%)};
+            --#{$prefix}topnav-item-color-active: #{$primary};
+        }
+    }
+}
