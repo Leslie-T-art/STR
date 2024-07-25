@@ -1,0 +1,57 @@
+/*
+Template Name: Vixon - Admin & Dashboard Template
+Author: Themesbrand
+Website: https://themesbrand.com/
+Contact: support@themesbrand.com
+File: Custom Css File
+*/  
+
+// Accordian
+.accordion-button {
+  &:not(.collapsed) {
+      color: var(--#{$prefix}accordion-btn-color);
+      background-color: var(--#{$prefix}accordion-btn-bg);
+
+      &:after {
+          transform: none;
+      }
+  }
+}
+
+.accordion-item {
+  &.panel-open {
+      .accordion-toggle {
+          &[aria-expanded="true"] {
+              .accordion-button {
+                  color: var(--#{$prefix}accordion-active-color);
+                  background-color: var(--#{$prefix}accordion-active-bg);
+
+                  &:after {
+                      transform: var(--#{$prefix}accordion-btn-icon-transform);
+                  }
+              }
+          }
+      }
+  }
+}
+
+// Tab
+.profile-nav{
+    > ul{
+      border: 1px solid $card-border-color !important;
+    width: 100%;
+    padding: 1.2rem 1.2rem;
+    border-radius: $card-border-radius;
+    margin-bottom: calc(var(--tb-grid-gutter-width) * .5);
+    }
+  }
+
+  .recent-nav{
+    .nav-link{
+        border-color: transparent !important;
+        box-shadow: none !important;
+        &.active{
+            color: $primary !important;
+        }
+    }
+  }
